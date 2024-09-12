@@ -5,6 +5,7 @@
   "license": "MIT",
   "author": "Elie <elieatamech@hotmail.com>",
   "private": true,
+  "type": "module",
   "workspaces": [
     "client",
     "server",
@@ -16,6 +17,8 @@
     "npm": "10.7.0"
   },
   "devDependencies": {
+    "@commitlint/cli": "^19.5.0",
+    "@commitlint/config-conventional": "^19.5.0",
     "husky": "^9.1.6",
     "pinst": "^3.0.0"
   },
