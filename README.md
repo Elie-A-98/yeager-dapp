@@ -45,20 +45,15 @@
 
 ### 1.1 Purpose of this Repository
 
-This project was initiated at the request of Araceli Martinez as part of the recruitment process to assess my skills.
-
 This repository aims to deliver a solution that aligns with the project requirements outlined in the [Fullstack_js_-_Web3_Integration](./docs/planning/documents/Fullstack_js_-_Web3_Integration.pdf) document I received on September 10, 2024.
 
-Being an assessment project, I will try without over-complicating the solution, to impress the reviewer to maximize the chance of my application being accepted. 
-
-I will set the list below as the main goals of this repository:
+This is a list of the main goals of this repository:
 
 - Implementing all the specified project requirements
 - Effective utilization of the designated technologies.
 - Demonstration of my knowledge of Web3
 - Demonstration of my ability to build a full-stack Web3 application that is both maintainable and scalable.
-- Share the decisions and assumptions I made.
-- Document the time invested and any challenges encountered during the development process.
+- Share the decisions and assumptions I made as well as the challenges faced during development.
 
 ### 1.2 Out of scope
 
@@ -72,24 +67,31 @@ This is a list of subjects which aree out of scope for this repository:
 
 I developed a DApp (Decentrazlized Application) that enables users to interact with digital assets on the **Ethereum blockchain**.
 
-**ElieNFT** is a new **ERC-721** compliant token (NFT) created using an ERC-721 compliant contract, that when deployed to the network only its owner can mint new ElieNFT tokens.
+**Elieum (ELI)** is a new **ERC-721** compliant token (NFT) created using an ERC-721 compliant contract in [packages/nft/contracts/token.sol](./packages/nft/contracts/token.sol)
 
 *After confirming with Araceli Martinez that the link provided for the smart contract in the requirement documents is not working, I used an industry standard ERC-721 contract from Oppenzeppelin*
 
-**Exchange** is a smart contract that users can interact with to transfer NFTs
+**Users** are able to connect their ethereum wallet, **display a gallery of the digital assets** owned by the connected wallet and **transfer digital assets** to other addresses.
 
-**Users** are able to connect their ethereum wallet (tested with metamask only so far), **display a gallery of the digital assets** owned by the connected wallet and **transfer digital assets** to other users.
+Additionally as mentioned in the project requirements document, **users should be able to mint new digital assets**. But allowing anyone to mint new NFT needs some considerations and can significantly devalue the token. 
+For that reason I took the assumption that **users will need to request from the owner of the smart contract to mint them a new Elieum** and link it to a digital asset. The owner can decided the addresses allowed to mint, based on some condition which i will decide later (but keep simple).
 
-Additionally as mentioned in the project requirements document, **users should be able to mint new digital assets**. But allowing anyone to mint new ElieNFT needs some consideration because it will devalue the token. For that reason users will need to request from the owner of the smart contract to mint them a new ElieNFT and link it to a digital asset. The incentive behind minting new tokens is out of scope of this project but for simplicity minting new token will require a certain wei to be transfered from the users account to the smart contract owner's account.
+Tokens are stored on the blockchain, but the **metadata of the digital asset and the digital asset itself are both stored on ipfs**. 
 
-Tokens are stored on the blockchain, but storing big binaries such as images and metadata on the blockchain is expensive and slow. For that reason the **metadata of the digital asset and the digital asset itself are both stored on ipfs**. 
+The **DApp** consists of the following:
 
-The **DApp** consist of a front end and a back-end.
+- **Ethereum Blockchain**
 
-The **back-end** is created for the owner to accept minting requests and provide helper apis for the front-end for example to store metadata files in ipfs. Additionally it is necessary for storing some sensitive keys to not compromise security.
+- **EVM (Ethereum virtual machine)**
 
-The **front-end** interface where the users interact with the application is built with Vue Js 
-The UI is responsive, user-friendly, SEO friendly and tailored only for web for now. While SEO may not be as critical for a DApp as it is for a traditional website, optimizing our SEO will help increase the visibility of the app within the Web3 community
+- **Back-end** application responsible for receiving minting requests and providing helper apis for the front-end for example to store metadata files in ipfs. Additionally it is where I will store some sensitive keys to avoid leaking them to the client thus compromising security.
+<br>**Sensitive keys** for now will be stored as environment variables in `.env` file and included in `.gitignore`. But on production a secrets management service like AWS Secrets Manager or Azure Key Vault should be used to securely store the keys and access them at the back-end application starting phase.
+
+- **Front-end** application reponsible for allowing the users to view their asset gallery, trasfering assets to other addresses and sending minting requests to the Back-end.
+<br>I will keep the user close to the blockchain and I won't store data on the backend unless necessary.
+<br>So for querying the smart contract and tranfering tokens the client app will directly use `ether.js`
+<br>It will use the backend only for requesting the owner to mint a new token for a user after he uploads the asset and metadata through a form
+<br>**The UI is responsive, user-friendly, SEO friendly** and tailored only for web for now. While SEO may not be as critical for a DApp as it is for a traditional website, optimizing our SEO will help increase the visibility of the app within the Web3 community
 
 ## 3. Architecture
 
@@ -146,6 +148,25 @@ I will enforce consistent commit message conventions using the following package
 ## 5. How to Run
 
 ## 6. Technologies Used
+
+This is a list of the technologies used with a brief description
+
+- **Blockchain**: a decentralized and distributed ledger system that records transactions batched in blocks. These blocks are verified by a network of nodes and added  to a public chain, creating a transparent, immutable and secure records
+- **Etheruem Blockchain**: a decentralized blockchain with smart contract functionality, **ether** is its native cryptocurrency, and unlike Bitcoin that uses the proof of work consensus mechanism, Ethereum uses proof of stake
+- **EVM**: Ethereum Virtual machine is a decentralized virtual machine that operates on the Ethereum blockchain, and it responsible for executing smart contracts and updating the state of the chain
+
+- **Solidity**: a high level programming language to create smart contracts. It is compiled into opcode then bytecode which is then deployed on the Ethereum network as transaction. Once deployed we can interact with it by sending transactions to its address and the EVM handles executing that smart contract
+
+- **HardHat**: an Ethereum development environment that can compile contracts and run them on a development network.
+
+- **Chai**: a javascript testing library that we can use to assert act verify (BDD/TDD assertion). Used in the [nft](./packages/nft/) project to write test cases for the token contract
+
+- **husky**: a js library that allows us to insert hooks into the git lifecycle
+
+- **commitlint**: a js library used with husky's hooks to enforce commit message conventions based on specific rules. The main types used in this project are `chore`, `docs`, `feat`
+
+- **yarn** package manager
+
 
 ## 7. Assumptions and Decisions
 
