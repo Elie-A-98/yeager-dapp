@@ -167,6 +167,10 @@ This is a list of the technologies used with a brief description
 
 - **yarn** package manager
 
+- **Ether.js**: a js library used to interact with the etheruem blockchain and its ecosystem.
+
+- **Metamask**: a cryptocurrency wallet that can be installed as a browser extension or app. It allows users to connect to their ethereum wallet and interact with the Ethereum blockchain
+
 
 ## 7. Assumptions and Decisions
 
