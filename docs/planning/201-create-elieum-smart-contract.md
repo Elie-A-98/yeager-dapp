@@ -6,4 +6,4 @@ New
 
 ## Description
 
-Create the smart contract responsible for minting ELI tokens
+Create the Token smart contract responsible for minting and transfering ELI tokens
