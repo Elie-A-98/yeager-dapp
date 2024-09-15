@@ -41,6 +41,7 @@ describe("Minting", () => {
         BusinessValidationError
       );
       verify(mockedMinter.canMint(anything())).called();
+      verify(mockedMinter.mint(anything())).once();
     });
   });
 });

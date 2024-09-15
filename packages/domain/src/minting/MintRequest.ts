@@ -17,6 +17,8 @@ export class MintRequest extends ValueObject {
     super();
     this._address = address;
     this._metadata = metadata;
+
+    minter.mint(address);
   }
 
   // here we enforce rules
