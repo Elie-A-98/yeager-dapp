@@ -1,8 +1,0 @@
-{
-  "extends": "../tsconfig.json",
-  "include": ["api/src/**/*.ts", "api/src/**/*.js"],
-  "exclude": ["**/__tests__/**", "**/__tests__/**"],
-  "compilerOptions": {
-    "outDir": "dist"
-  }
-}

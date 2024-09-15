@@ -25,7 +25,8 @@
   "scripts": {
     "postinstall": "husky",
     "prepack": "pinst --disable",
-    "postpack": "pinst --enable"
+    "postpack": "pinst --enable",
+    "api-dev": "cd backend/api && yarn run dev"
   },
   "dependencies": {
     "@yarnpkg/types": "^4.0.0"
