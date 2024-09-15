@@ -11,7 +11,7 @@
     "server",
     "packages/*"
   ],
-  "packageManager": "yarn@1.22.21",
+  "packageManager": "yarn@4.5.0",
   "engines": {
     "node": "20.17.0",
     "npm": "10.7.0"
