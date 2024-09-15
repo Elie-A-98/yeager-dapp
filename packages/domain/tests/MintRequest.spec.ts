@@ -1,8 +1,8 @@
 import { expect } from "chai";
 import { mock, anything, when, instance, verify } from "ts-mockito";
-import { IMinter } from "../minting/IMinter.js";
-import { Metadata, MintRequest } from "../minting/MintRequest.js";
-import { BusinessValidationError } from "../BusinessValidationError.js";
+import { IMinter } from "../src/minting/IMinter.js";
+import { Metadata, MintRequest } from "../src/minting/MintRequest.js";
+import { BusinessValidationError } from "../src/BusinessValidationError.js";
 
 describe("Minting", () => {
   describe("MintRequest", () => {
