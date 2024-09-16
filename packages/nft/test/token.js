@@ -1,6 +1,3 @@
-const {
-  increaseTo,
-} = require("@nomicfoundation/hardhat-network-helpers/dist/src/helpers/time");
 const { expect } = require("chai");
 const { ethers } = require("hardhat");
 

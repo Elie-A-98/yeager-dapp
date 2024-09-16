@@ -6,18 +6,17 @@
 // global scope, and execute the script.
 const hre = require("hardhat");
 const fs = require("fs/promises");
+const dotenv = require('dotenv')
+
+dotenv.config();
 
 async function main() {
   const Token = await hre.ethers.getContractFactory("Token");
-  const token = await Token.deploy("100");
+  const token = await Token.deploy(process.env.ADDRESS);
 
-  const DEX = await hre.ethers.getContractFactory("DEX");
-  const dex = await DEX.deploy(token, 100);
 
   await token.waitForDeployment();
-  await dex.waitForDeployment();
   await writeDeploymentInfo(token, "token.json");
-  await writeDeploymentInfo(dex, "dex.json");
 }
 
 async function writeDeploymentInfo(contract, filename = "") {
