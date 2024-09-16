@@ -10,7 +10,8 @@ export const envConfigSchema = z.object({
     PORT: z.string(),
     PINATA_API_KEY: z.string(),
     INFURA_API_KEY: z.string(),
-    NETWORK: z.enum(['HardHat', 'Sepolia'])
+    NETWORK: z.enum(['HardHat', 'Sepolia']),
+    WALLET_PRIVATE_KEY: z.string()
   });
 
 export const loadConfig = () => {
