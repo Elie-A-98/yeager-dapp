@@ -1,0 +1,86 @@
+/* color palette from <https://github.com/vuejs/theme> */
+:root {
+  --color-background-light: #F7FAFC;
+  --color-text-light: #0D141C;
+  --color-primary-light: #4F7396;
+  --color-accent-light: #D1DBE8;
+
+  --color-background-dark: #121A21;
+  --color-text-dark: #FFFFFF;
+  --color-primary-dark: #94ADC7;
+  --color-accent-dark: #334D66;
+
+  --font-size: 1rem;
+  --cell-size: calc(var(--font-size) * var(--font-size));
+  --line-height: var(--cell-size);
+  --spacing-1: var(--cell-size);
+  --spacing-2: calc(var(--cell-size) * 2);
+}
+
+/* semantic color variables for this project */
+@media (prefers-color-scheme: dark) {
+  :root {
+    --color-background: var(--color-background-dark);
+    --color-text: var(--color-text-dark);
+    --color-primary: var(--color-primary-dark);
+    --color-accent: var(--color-accent-dark);
+  }
+}
+
+
+html {
+  height: 100%;
+  color-scheme: dark light;
+}
+
+[data-theme="light"] {
+  color-scheme: light;
+  --color-background: var(--color-background-light);
+  --color-text: var(--color-text-light);
+  --color-primary: var(--color-primary-light);
+  --color-accent: var(--color-accent-light);
+
+}
+
+[data-theme="dark"] {
+  color-scheme: dark;
+  --color-background: var(--color-background-dark);
+  --color-text: var(--color-text-dark);
+  --color-primary: var(--color-primary-dark);
+  --color-accent: var(--color-accent-dark);
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  font-weight: normal;
+}
+
+body {
+  height: 100%;
+  color: var(--color-text);
+  background: var(--color-background);
+  transition:
+    color 0.5s,
+    background-color 0.5s;
+  line-height: var(--line-height);
+  font-family:
+    Inter,
+    -apple-system,
+    BlinkMacSystemFont,
+    'Segoe UI',
+    Roboto,
+    Oxygen,
+    Ubuntu,
+    Cantarell,
+    'Fira Sans',
+    'Droid Sans',
+    'Helvetica Neue',
+    sans-serif;
+  font-size: var(--font-size);
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
