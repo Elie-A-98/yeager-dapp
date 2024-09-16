@@ -5,6 +5,7 @@
   "license": "MIT",
   "private": true,
   "dependencies": {
-    "domain": "workspace:*"
+    "yeager-domain": "workspace:*"
+  },
   }
 }

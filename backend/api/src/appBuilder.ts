@@ -3,6 +3,8 @@ import { Config } from "./config.js";
 import { loadConfig } from "./configLoader.js";
 import { createLogger, Logger } from "./logger.js";
 import v1 from "./app/gateways/v1/index.js";
+import { IMinter } from "yeager-domain";
+import { Minter } from "./mint/minter.js";
 
 type Services = {
   logger: Logger;
