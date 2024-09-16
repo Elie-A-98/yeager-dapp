@@ -2474,15 +2474,16 @@ __metadata:
     "@types/express": "npm:^4.17.21"
     "@types/node": "npm:^22.5.4"
     application: "workspace:*"
-    domain: "workspace:*"
     dotenv: "npm:^16.4.5"
     eslint: "npm:^9.10.0"
+    ethers: "npm:^6.13.2"
     express: "npm:^4.21.0"
     globals: "npm:^15.9.0"
     helmet: "npm:^7.1.0"
     typescript: "npm:^5.6.2"
     typescript-eslint: "npm:^8.5.0"
     winston: "npm:^3.14.2"
+    yeager-domain: "workspace:*"
     zod: "npm:^3.23.8"
   languageName: unknown
   linkType: soft
@@ -2491,7 +2492,12 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "application@workspace:backend/application"
   dependencies:
-    domain: "workspace:*"
+    "@eslint/js": "npm:^9.10.0"
+    eslint: "npm:^9.10.0"
+    globals: "npm:^15.9.0"
+    typescript: "npm:^5.6.2"
+    typescript-eslint: "npm:^8.5.0"
+    yeager-domain: "workspace:*"
   languageName: unknown
   linkType: soft
 
@@ -3855,20 +3861,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"domain@workspace:*, domain@workspace:packages/domain":
-  version: 0.0.0-use.local
-  resolution: "domain@workspace:packages/domain"
-  dependencies:
-    "@types/chai": "npm:^4.3.19"
-    "@types/mocha": "npm:^10.0.8"
-    chai: "npm:^5.1.1"
-    mocha: "npm:^10.7.3"
-    ts-mockito: "npm:^2.6.1"
-    ts-node: "npm:^10.9.2"
-    typescript: "npm:^5.6.2"
-  languageName: unknown
-  linkType: soft
-
 "dot-prop@npm:^5.1.0":
   version: 5.3.0
   resolution: "dot-prop@npm:5.3.0"
@@ -4410,7 +4402,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"ethers@npm:^6.4.0, ethers@npm:^6.7.0":
+"ethers@npm:^6.13.2, ethers@npm:^6.4.0, ethers@npm:^6.7.0":
   version: 6.13.2
   resolution: "ethers@npm:6.13.2"
   dependencies:
@@ -7064,6 +7056,7 @@ __metadata:
     "@typechain/ethers-v6": "npm:^0.5.0"
     "@typechain/hardhat": "npm:^9.0.0"
     chai: "npm:^4.2.0"
+    dotenv: "npm:^16.4.5"
     ethers: "npm:^6.4.0"
     hardhat: "npm:^2.22.10"
     hardhat-gas-reporter: "npm:^1.0.8"
@@ -10045,6 +10038,20 @@ __metadata:
     "@yarnpkg/types": "npm:^4.0.0"
     husky: "npm:^9.1.6"
     pinst: "npm:^3.0.0"
+  languageName: unknown
+  linkType: soft
+
+"yeager-domain@workspace:*, yeager-domain@workspace:packages/domain":
+  version: 0.0.0-use.local
+  resolution: "yeager-domain@workspace:packages/domain"
+  dependencies:
+    "@types/chai": "npm:^4.3.19"
+    "@types/mocha": "npm:^10.0.8"
+    chai: "npm:^5.1.1"
+    mocha: "npm:^10.7.3"
+    ts-mockito: "npm:^2.6.1"
+    ts-node: "npm:^10.9.2"
+    typescript: "npm:^5.6.2"
   languageName: unknown
   linkType: soft
 

@@ -1,5 +1,5 @@
 import winston from "winston";
-import { Config } from "./configLoader.js";
+import { Config } from "../configLoader.js";
 
 let logger: winston.Logger | undefined = undefined;
 

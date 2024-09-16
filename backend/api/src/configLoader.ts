@@ -1,8 +1,25 @@
 import dotenv from "dotenv";
-import { Config, configSchema } from "./config.js";
+import hardHatConfig from './hardhat/config.json' with {type: "json"}
+import loggerConfig from './logger/config.json' with {type: "json"}
+import { z } from "zod";
 
 dotenv.config()
 
-export const loadConfig = (): Config => {
-    return configSchema.parse({...process.env, logging: {level: 'info'}});
+export const envConfigSchema = z.object({
+    NODE_ENV: z.string(),
+    PORT: z.string(),
+    PINATA_API_KEY: z.string(),
+    INFURA_API_KEY: z.string(),
+    NETWORK: z.enum(['HardHat', 'Sepolia'])
+  });
+
+export const loadConfig = () => {
+    const envConfig = envConfigSchema.parse(process.env)
+    return {
+        ...envConfig,
+        hardHat: hardHatConfig,
+        logger: loggerConfig
+    }
 };
+
+export type Config = ReturnType<typeof loadConfig>

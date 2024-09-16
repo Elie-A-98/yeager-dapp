@@ -1,9 +1,11 @@
 import { Router } from "express"
+import { UseCases } from "../../../../appBuilder.js";
 
-export default ()=>{
+export default (useCases: UseCases)=>{
     const router = Router();
-    router.post('/', (req, res)=>{
-        res.send("Hello world");
+    router.post('/', async (req, res)=>{
+        await useCases.mintToken.execute({ address: "asd" });
+        res.send("Minted!!");
     })
     return router;
 }
