@@ -1,18 +1,21 @@
 /* color palette from <https://github.com/vuejs/theme> */
 :root {
   --color-background-light: #F7FAFC;
+  --color-background-mid-light: #C4C4C4;
   --color-text-light: #0D141C;
   --color-primary-light: #4F7396;
   --color-accent-light: #D1DBE8;
 
   --color-background-dark: #121A21;
+  --color-background-mid-dark: #202e3a;
   --color-text-dark: #FFFFFF;
   --color-primary-dark: #94ADC7;
   --color-accent-dark: #334D66;
 
   --font-size: 1rem;
-  --cell-size: calc(var(--font-size) * var(--font-size));
+  --cell-size: calc(var(--font-size) * 1.6);
   --line-height: var(--cell-size);
+  --spacing-05: calc(var(--cell-size) / 2);
   --spacing-1: var(--cell-size);
   --spacing-2: calc(var(--cell-size) * 2);
 }
@@ -21,9 +24,20 @@
 @media (prefers-color-scheme: dark) {
   :root {
     --color-background: var(--color-background-dark);
+    --color-background-mid: var(--color-background-mid-dark);
     --color-text: var(--color-text-dark);
     --color-primary: var(--color-primary-dark);
     --color-accent: var(--color-accent-dark);
+  }
+}
+
+@media (prefers-color-scheme: light) {
+  :root {
+    --color-background: var(--color-background-light);
+    --color-background-mid: var(--color-background-mid-light);
+    --color-text: var(--color-text-light);
+    --color-primary: var(--color-primary-light);
+    --color-accent: var(--color-accent-light);
   }
 }
 
@@ -36,6 +50,7 @@ html {
 [data-theme="light"] {
   color-scheme: light;
   --color-background: var(--color-background-light);
+  --color-background-mid: var(--color-background-mid-light);
   --color-text: var(--color-text-light);
   --color-primary: var(--color-primary-light);
   --color-accent: var(--color-accent-light);
@@ -45,6 +60,7 @@ html {
 [data-theme="dark"] {
   color-scheme: dark;
   --color-background: var(--color-background-dark);
+  --color-background-mid: var(--color-background-mid-dark);
   --color-text: var(--color-text-dark);
   --color-primary: var(--color-primary-dark);
   --color-accent: var(--color-accent-dark);

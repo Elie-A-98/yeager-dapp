@@ -2,33 +2,57 @@
 
 #app {
   height: 100%;
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 2rem;
-  font-weight: normal;
+}
+
+p {
+  max-width: 75ch;
+  margin: auto;
+}
+
+section {
+  margin: auto;
+  max-width: 75%;
+  padding: var(--spacing-one) var(--spacing-two);
+
 }
 
 a {
+  position: relative;
   text-decoration: none;
   transition: 0.4s;
   padding: 3px;
+  color: var(--color-text);
+}
+
+a:visited{
+  color: unset;
+}
+
+a::after{
+  content: "";
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  right: 0;
+  height: 1px;
+  transform: scaleX(0);
+  transition: transform 0.2s;
+  background-color: var(--color-primary);
+}
+
+a:active::after{
+  transform: scaleX(1);
+}
+
+a.router-link-exact-active {
+  color: var(--color-primary);
+}
+a.router-link-exact-active::after{
+  transform: scaleX(1);
 }
 
 @media (hover: hover) {
-  a:hover {
-    background-color: var(--color-accent);
-  }
-}
-
-@media (min-width: 1024px) {
-  body {
-    display: flex;
-    place-items: center;
-  }
-
-  #app {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    padding: 0 2rem;
+  a:hover::after {
+    transform: scaleX(1);
   }
 }

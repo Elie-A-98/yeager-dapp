@@ -1,17 +1,28 @@
 import './assets/main.css'
 
-import { createApp } from 'vue'
+import { createApp, provide, readonly, ref } from 'vue'
+import { createWebHistory, createRouter } from 'vue-router'
+import { createPinia } from 'pinia'
 import App from './App.vue'
+import protectedRoutes from './routes/protected'
+import sharedRoutes from './routes/shared'
+import publicRoutes from './routes/public'
 
-const app = createApp(App);
+const pinia = createPinia()
+const app = createApp(App)
 
+const router = createRouter({
+  history: createWebHistory(),
+  routes: [...protectedRoutes, ...sharedRoutes, ...publicRoutes]
+})
+
+app.use(pinia)
+app.use(router)
 app.mount('#app')
 
+app.config.errorHandler = (err) => {
+  console.error(err)
+  router.push('/problem-occured')
 
-app.config.errorHandler = (err)=>{
-    alert('An error occured.')
-    
-    //log the error to a remote server
-    
-    return false
+  return false
 }

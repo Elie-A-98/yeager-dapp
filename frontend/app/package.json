@@ -16,7 +16,11 @@
     "format": "prettier --write src/"
   },
   "dependencies": {
-    "vue": "^3.4.29"
+    "@metamask/sdk": "^0.28.4",
+    "ethers": "^6.13.2",
+    "pinia": "^2.2.2",
+    "vue": "^3.4.29",
+    "vue-router": "4"
   },
   "devDependencies": {
     "@rushstack/eslint-patch": "^1.8.0",
