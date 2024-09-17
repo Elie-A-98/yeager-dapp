@@ -1,7 +1,7 @@
 import { IMinter } from "yeager-domain";
 import { ethers } from "ethers";
 import { JsonRpcProvider } from "ethers";
-import { Config } from "../configLoader.js";
+import { Config } from "../../configLoader.js";
 import { Wallet } from "ethers";
 import * as token from 'nft/token.json' with {type: "json"}
 
@@ -28,6 +28,8 @@ export class Minter implements IMinter {
         `${this.constructor.name}: unkown network. Check your environment variables`
       );
     }
+
+    
     const wallet = new Wallet(this._config.WALLET_PRIVATE_KEY)
     const signer = wallet.connect(provider)
     

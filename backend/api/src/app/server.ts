@@ -8,7 +8,7 @@ export class Server {
     this._appBuilder = appBuilder;
     this.app = express();
 
-    this.app.use(this._appBuilder.gateways.mint);
+    this.app.use(this._appBuilder.gateways);
   }
 
   async start() {
