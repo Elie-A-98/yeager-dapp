@@ -36,6 +36,8 @@ export class Minter implements IMinter {
 
       //@ts-expect-error methods are generated at run-time
       await contract.safeMint(address, 'testd-uri')
+    }catch{
+        console.log('Refactor this')
     }
 
   }
