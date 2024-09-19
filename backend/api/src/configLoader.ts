@@ -6,9 +6,10 @@ import { z } from "zod";
 dotenv.config()
 
 export const envConfigSchema = z.object({
-    NODE_ENV: z.string(),
+    NODE_ENV: z.enum(['Development', 'Production']),
     PORT: z.string(),
-    PINATA_API_KEY: z.string(),
+    PINATA_JWT: z.string(),
+    PINATA_GATEWAY_URL: z.string(),
     INFURA_API_KEY: z.string(),
     NETWORK: z.enum(['HardHat', 'Sepolia']),
     WALLET_PRIVATE_KEY: z.string()
