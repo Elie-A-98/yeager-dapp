@@ -1,15 +1,16 @@
 {
-  "name": "application",
+  "name": "@yeager/application",
   "version": "1.0.0",
-  "main": "index.js",
   "license": "MIT",
-  "type": "module",
   "private": true,
+  "type": "module",
   "scripts": {
     "build": "yarn run eslint . && tsc"
   },
   "dependencies": {
-    "yeager-domain": "workspace:*"
+    "@yeager/domain": "workspace:*",
+    "ethers": "^6.13.2",
+    "zod": "^3.23.8"
   },
   "devDependencies": {
     "@eslint/js": "^9.10.0",

@@ -1,5 +1,5 @@
 {
-  "name": "yeager-dapp",
+  "name": "yeager",
   "version": "1.0.0",
   "main": "index.js",
   "license": "MIT",
@@ -8,8 +8,8 @@
   "type": "module",
   "workspaces": [
     "frontend/*",
-    "backend/*",
-    "packages/*"
+    "packages/*",
+    "backend/*"
   ],
   "packageManager": "yarn@4.5.0",
   "engines": {
@@ -19,8 +19,13 @@
   "devDependencies": {
     "@commitlint/cli": "^19.5.0",
     "@commitlint/config-conventional": "^19.5.0",
+    "@eslint/js": "^9.10.0",
+    "eslint": "^9.10.0",
+    "globals": "^15.9.0",
     "husky": "^9.1.6",
-    "pinst": "^3.0.0"
+    "pinst": "^3.0.0",
+    "typescript": "^5.6.2",
+    "typescript-eslint": "^8.6.0"
   },
   "scripts": {
     "postinstall": "husky",

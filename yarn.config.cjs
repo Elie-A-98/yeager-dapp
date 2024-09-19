@@ -7,7 +7,7 @@ module.exports = defineConfig({
   async constraints({ Yarn }) {
 
     // Ensure backend workspaces are never referenced from outside
-    const backendWorkspaces = [Yarn.workspace({ident: 'api'}), Yarn.workspace({ident: 'application'}), Yarn.workspace({ident: 'yeager-domain'})]
+    const backendWorkspaces = [Yarn.workspace({ident: '@yeager/api'}), Yarn.workspace({ident: '@yeager/application'}), Yarn.workspace({ident: '@yeager/domain'})]
     backendWorkspaces.forEach(backendWorkspace => {
         if(!backendWorkspace || !backendWorkspace.ident) return;
         for(const dep of Yarn.dependencies({ident: backendWorkspace.ident})){
@@ -18,13 +18,13 @@ module.exports = defineConfig({
     
     // Ensure correct dependency direction for Clean Architecture workspaces
     const domain = Yarn.workspace({
-        ident: 'yeager-domain'
+        ident: '@yeager/domain'
     })
     const application = Yarn.workspace({
-        ident: 'application'
+        ident: '@yeager/application'
     })
     const api = Yarn.workspace({
-        ident: 'api'
+        ident: '@yeager/api'
     })
 
     for(const dep of Yarn.dependencies({ident: 'application'})){
