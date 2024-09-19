@@ -1,18 +1,23 @@
-import { expect } from "chai";
+import * as chai from "chai";
+import chaiAsPromised from "chai-as-promised";
 import { mock, anything, when, instance, verify } from "ts-mockito";
-import { IMinter } from "../src/minting/IMinter.js";
 import { Metadata, MintRequest } from "../src/minting/MintRequest.js";
 import { BusinessValidationError } from "../src/BusinessValidationError.js";
+import { INetworkRepository } from "../src/minting/INetworkRepository.js";
+
+const {expect} = chai
+chai.use(chaiAsPromised);
 
 describe("Minting", () => {
   describe("MintRequest", () => {
-    let mockedMinter: IMinter = mock<IMinter>();
-    let addr1 = "address1";
+    const mockedNetworkRepository: INetworkRepository =
+      mock<INetworkRepository>();
+    const addr1 = "address1";
 
-    it("should fail if the address is not allowed to mint", () => {
+    it("should fail if the address is not allowed to mint", async () => {
       // Arrange
-      when(mockedMinter.canMint(anything())).thenReturn(false);
-      let minter = instance(mockedMinter);
+      when(mockedNetworkRepository.canMint(anything())).thenResolve(false);
+      const networkRepository = instance(mockedNetworkRepository);
       const metadata: Metadata = {
         name: "TestName",
         description: "TestFile",
@@ -20,16 +25,17 @@ describe("Minting", () => {
       };
 
       // Act + Assert
-      expect(() => MintRequest.CreateNew(addr1, metadata, minter)).throw(
-        BusinessValidationError
-      );
-      verify(mockedMinter.canMint(anything())).called();
+      await expect(
+        MintRequest.CreateNew(addr1, metadata, "test-uri", networkRepository)
+      ).to.be.rejectedWith(BusinessValidationError);
+
+      verify(mockedNetworkRepository.canMint(anything())).called();
     });
 
-    it("should succeed if the address is allowed to mint", () => {
+    it("should succeed if the address is allowed to mint", async () => {
       // Arrange
-      when(mockedMinter.canMint(anything())).thenReturn(true);
-      let minter = instance(mockedMinter);
+      when(mockedNetworkRepository.canMint(anything())).thenResolve(true);
+      const networkRepository = instance(mockedNetworkRepository);
       const metadata: Metadata = {
         name: "TestName",
         description: "TestFile",
@@ -37,11 +43,10 @@ describe("Minting", () => {
       };
 
       // Act + Assert
-      expect(() => MintRequest.CreateNew(addr1, metadata, minter)).not.throw(
+      await expect(MintRequest.CreateNew(addr1, metadata, 'test-uri', networkRepository)).not.to.be.rejectedWith(
         BusinessValidationError
       );
-      verify(mockedMinter.canMint(anything())).called();
-      verify(mockedMinter.mint(anything())).once();
+      verify(mockedNetworkRepository.canMint(anything())).called();
     });
   });
 });

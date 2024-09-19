@@ -1,6 +1,6 @@
 interface IBusinessRule {
   message: Readonly<string>;
-  isBroken(): boolean;
+  isBroken(): Promise<boolean>;
 }
 
 export abstract class BusinessRule implements IBusinessRule{
@@ -8,5 +8,5 @@ export abstract class BusinessRule implements IBusinessRule{
         return `${this.constructor.name}: ${this.message}`
     }
     abstract message: string;
-    abstract isBroken(): boolean;
+    abstract isBroken(): Promise<boolean>;
 }

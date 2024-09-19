@@ -1,6 +1,6 @@
 import { ValueObject } from "../ValueObject.js";
-import { AddressId, IMinter } from "./IMinter.js";
-import { UserDoesntHavePermissionToMintRule } from "./rules/UserDoesntHavePermissionToMintRule.js";
+import { AddressId, INetworkRepository } from "./INetworkRepository.js";
+import { UserHavePermissionToMintRule } from "./rules/UserHavePermissionToMintRule.js";
 
 export type Metadata = {
   name: string;
@@ -11,19 +11,30 @@ export type Metadata = {
 export class MintRequest extends ValueObject {
   private readonly _metadata: Metadata;
   private readonly _address: AddressId;
+  private readonly _uri: string
+
+  get address(){
+    return this._address
+  }
+  get uri(){
+    return this._uri
+  }
+  get metadata(){
+    return this._metadata
+  }
 
   // To not allow any external client to create new instances without enforcing rules
-  private constructor(address: AddressId, metadata: Metadata, minter: IMinter) {
+  private constructor(address: AddressId, metadata: Metadata, uri:string) {
     super();
     this._address = address;
     this._metadata = metadata;
-
-    minter.mint(address);
+    this._uri = uri
   }
 
   // here we enforce rules
-  public static CreateNew(to: AddressId, metaData: Metadata, minter: IMinter) {
-    this.validateRule(new UserDoesntHavePermissionToMintRule(minter, to));
-    return new MintRequest(to, metaData, minter);
+  public static async CreateNew(to: AddressId, metaData: Metadata, uri:string, networkRepository: INetworkRepository) {
+    await this.validateRule(new UserHavePermissionToMintRule(networkRepository, to));
+    const newRequest = new MintRequest(to, metaData, uri);
+    return newRequest
   }
 }
