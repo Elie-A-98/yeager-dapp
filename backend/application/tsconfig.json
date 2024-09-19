@@ -2,6 +2,11 @@
   "extends": "../../tsconfig.json",
   "include": ["src/**/*.ts", "src/**/*.js"],
   "compilerOptions": {
-    "outDir": "dist"
+    "outDir": "dist",
+    "rootDir": "src",
+    "declaration": true,
+    "declarationMap": true,
+    "sourceMap": true,
+    "emitDeclarationOnly": false,
   }
 }
