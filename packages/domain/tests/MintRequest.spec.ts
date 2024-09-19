@@ -21,12 +21,12 @@ describe("Minting", () => {
       const metadata: Metadata = {
         name: "TestName",
         description: "TestFile",
-        file: new Blob([]),
+        file: Buffer.from([]),
       };
 
       // Act + Assert
       await expect(
-        MintRequest.CreateNew(addr1, metadata, "test-uri", networkRepository)
+        MintRequest.CreateNew(addr1, metadata, networkRepository)
       ).to.be.rejectedWith(BusinessValidationError);
 
       verify(mockedNetworkRepository.canMint(anything())).called();
@@ -39,11 +39,11 @@ describe("Minting", () => {
       const metadata: Metadata = {
         name: "TestName",
         description: "TestFile",
-        file: new Blob([]),
+        file: Buffer.from([]),
       };
 
       // Act + Assert
-      await expect(MintRequest.CreateNew(addr1, metadata, 'test-uri', networkRepository)).not.to.be.rejectedWith(
+      await expect(MintRequest.CreateNew(addr1, metadata, networkRepository)).not.to.be.rejectedWith(
         BusinessValidationError
       );
       verify(mockedNetworkRepository.canMint(anything())).called();
