@@ -25,6 +25,7 @@
     "@types/node": "^22.5.4",
     "@yeager/application": "workspace:*",
     "@yeager/domain": "workspace:*",
+    "@yeager/dtos": "workspace:*",
     "@yeager/nft": "workspace:*",
     "cors": "^2.8.5",
     "dotenv": "^16.4.5",

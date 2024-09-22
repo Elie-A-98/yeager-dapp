@@ -30,7 +30,7 @@ export class NetworkConnection {
     this.wallet = new Wallet(this._config.WALLET_PRIVATE_KEY)
     this.signer = this.wallet.connect(provider);
     //@ts-expect-error there are no generated types so i have to provide custom types
-    this.contract = new ethers.Contract(token.default.contract.target, token.default.abi, this.signer) as TokenContract;
+    this.contract = new ethers.Contract(this._config.CONTRACT_ADDRESS, token.default.abi, this.signer) as TokenContract;
     this._pinata = pinata
   }
 }

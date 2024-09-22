@@ -13,7 +13,7 @@ export class NetworkRepository implements INetworkRepository {
 
     const { IpfsHash: fileIpfsHash } = await connection.pinata.upload
       .file(
-        new File([mintRequest.metadata.file], mintRequest.metadata.name, {
+        new File([mintRequest.metadata.asset], mintRequest.metadata.name, {
           type: "text/plain",
         })
       )

@@ -7,16 +7,7 @@ export const mintTokenRequestDtoSchema = z.object({
   }),
   name: z.string(),
   description: z.string(),
-  file: z.object({
-    originalname: z.string(),
-    mimetype: z
-      .string()
-      .refine((val) => ["image/jpeg", "image/png", "image/gif"].includes(val), {
-        message: "Only JPEG, PNG, or GIF files are allowed",
-      }),
-    size: z.number().max(1024 * 1024 * 5, "File size must be less than 5MB"), // Limit to 5MB
-    buffer: z.instanceof(Buffer)
-  }),
+  asset: z.instanceof(Blob)
 });
 
 export type MintTokenRequestDto = z.infer<typeof mintTokenRequestDtoSchema>;

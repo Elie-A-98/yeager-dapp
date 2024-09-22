@@ -1,7 +1,7 @@
 import { INetworkRepository } from "@yeager/domain/minting/INetworkRepository.js";
-import { MintTokenRequestDto } from "./dto.js";
 import { ICommandHander } from "../types.js";
 import { MintRequest } from "@yeager/domain/minting/MintRequest.js";
+import { MintTokenRequestDto } from "@yeager/dtos/mintTokenDto.js";
 
 export class MintTokenCommandHandler
   implements ICommandHander<MintTokenRequestDto>
@@ -12,14 +12,13 @@ export class MintTokenCommandHandler
     this._networkRepository = networkRepository;
   }
   async execute(dto: MintTokenRequestDto): Promise<void> {
-    const { address, name, description, file } = dto;
-
+    const { address, name, description } = dto;
     const mintRequest = await MintRequest.CreateNew(
       address,
       {
         name,
         description,
-        file: file.buffer,
+        asset: dto.asset,
       },
       this._networkRepository
     );

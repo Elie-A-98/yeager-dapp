@@ -2,6 +2,7 @@ import dotenv from "dotenv";
 import hardHatConfig from './hardhat/config.json' with {type: "json"}
 import loggerConfig from './logger/config.json' with {type: "json"}
 import { z } from "zod";
+import {ethers} from 'ethers'
 
 dotenv.config()
 
@@ -12,7 +13,10 @@ export const envConfigSchema = z.object({
     PINATA_GATEWAY_URL: z.string(),
     INFURA_API_KEY: z.string(),
     NETWORK: z.enum(['HardHat', 'Sepolia']),
-    WALLET_PRIVATE_KEY: z.string()
+    WALLET_PRIVATE_KEY: z.string(),
+    CONTRACT_ADDRESS: z.string().refine(val => ethers.isAddress(val),{
+        message: `CONTRACT_ADDRESS is not a valid address`
+    })
   });
 
 export const loadConfig = () => {

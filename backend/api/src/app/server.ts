@@ -5,6 +5,8 @@ import helmet from "helmet";
 import { BusinessValidationError } from "@yeager/domain/BusinessValidationError.js";
 import { UserHavePermissionToMintRule } from "@yeager/domain/minting/rules/UserHavePermissionToMintRule.js";
 import { ZodError } from "zod";
+import { MulterError } from "multer";
+import {ResponseError} from '@yeager/dtos/errorCodes.js'
 
 export class Server {
   private _appBuilder: AppBuilder;
@@ -21,7 +23,7 @@ export class Server {
     this.app.use(this._appBuilder.gateways);
 
     // error formatter - TODO: refactor to be modular
-    const createErrResponse = (error: Error) => {
+    const createErrResponse = (error: Error): ResponseError => {
       if (error instanceof BusinessValidationError) {
         return {
           code: "BUSINESS_ERROR",
@@ -31,14 +33,22 @@ export class Server {
       if (error.name === "ZodError") {
         return {
           code: "VALIDATION_ERROR",
-          message: (error as ZodError).issues,
+          message: (error as ZodError).format()._errors.join(', '),
+        };
+      }
+      if (error instanceof MulterError) {
+        return {
+          code: "VALIDATION_ERROR",
+          message: error.field,
         };
       }
       if (this._appBuilder.services.config.NODE_ENV === "Production") {
-        return {};
+        return undefined;
       }
       return {
+        code: "SERVER",
         ...error,
+        //@ts-expect-error this is debugging purposes. the dto used by the ui doesn't need to know about this
         stack: error.stack,
       };
     };

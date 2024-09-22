@@ -5,7 +5,7 @@ import { UserHavePermissionToMintRule } from "./rules/UserHavePermissionToMintRu
 export type Metadata = {
   name: string;
   description: string;
-  file: Buffer;
+  asset: Blob;
 };
 
 export class MintRequest extends ValueObject {
