@@ -1,13 +1,15 @@
 <script setup lang="ts">
-import { ethereumInjectionKey } from '@/ethereum';
+import { ethereumInjectionKey, isAccountConnected } from '@/ethereum';
 import { isEmpty } from '@/strings/validation';
-import { inject, onMounted } from 'vue';
-import { useRouter } from 'vue-router';
+import { computed, inject, onBeforeMount } from 'vue';
+import { onBeforeRouteLeave, onBeforeRouteUpdate, useRouter } from 'vue-router';
 
 const ethereum = inject(ethereumInjectionKey)!;
 const router = useRouter();
 
-if(isEmpty(ethereum.account.value)) {
+const shouldRender = computed(() => isAccountConnected(ethereum.account))
+
+if (!isAccountConnected(ethereum.account)) {
     const redirectTo = router.currentRoute.value.fullPath.split('/')[1]
     router.replace(`/connect-wallet${!isEmpty(redirectTo) ? `?redirect=${redirectTo}` : ''}`)
 }
@@ -15,5 +17,5 @@ if(isEmpty(ethereum.account.value)) {
 </script>
 
 <template>
-    <RouterView />
+    <RouterView v-if="shouldRender" />
 </template>

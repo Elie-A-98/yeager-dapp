@@ -1,7 +1,6 @@
 <script setup lang="ts">
-    
 </script>
 
 <template>
-    <h1>This is transfer</h1>
+    <RouterView />
 </template>

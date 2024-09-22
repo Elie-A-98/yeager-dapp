@@ -5,16 +5,23 @@
   --color-text-light: #0D141C;
   --color-primary-light: #4F7396;
   --color-accent-light: #D1DBE8;
+  --color-error-light: #D92736;
+  --color-success-light: #27d942;
 
   --color-background-dark: #121A21;
   --color-background-mid-dark: #202e3a;
   --color-text-dark: #FFFFFF;
   --color-primary-dark: #94ADC7;
   --color-accent-dark: #334D66;
+  --color-error-dark: #D92736;
+  --color-success-dark: #27d942;
 
   --font-size: 1rem;
+  --font-size-sm: calc(var(--font-size) / 1.3);
+  --font-size-xs: calc(var(--font-size) / 1.5);
   --cell-size: calc(var(--font-size) * 1.6);
   --line-height: var(--cell-size);
+  --spacing-25: calc(var(--cell-size) / 4);
   --spacing-05: calc(var(--cell-size) / 2);
   --spacing-1: var(--cell-size);
   --spacing-2: calc(var(--cell-size) * 2);
@@ -28,6 +35,8 @@
     --color-text: var(--color-text-dark);
     --color-primary: var(--color-primary-dark);
     --color-accent: var(--color-accent-dark);
+    --color-error: var(--color-error-dark);
+    --color-success: var(--color-success-dark);
   }
 }
 
@@ -38,6 +47,8 @@
     --color-text: var(--color-text-light);
     --color-primary: var(--color-primary-light);
     --color-accent: var(--color-accent-light);
+    --color-error: var(--color-error-light);
+    --color-success: var(--color-success-light);
   }
 }
 
@@ -54,6 +65,8 @@ html {
   --color-text: var(--color-text-light);
   --color-primary: var(--color-primary-light);
   --color-accent: var(--color-accent-light);
+  --color-error: var(--color-error-light);
+  --color-success: var(--color-success-light);
 
 }
 
@@ -64,6 +77,8 @@ html {
   --color-text: var(--color-text-dark);
   --color-primary: var(--color-primary-dark);
   --color-accent: var(--color-accent-dark);
+  --color-error: var(--color-error-dark);
+  --color-success: var(--color-success-dark);
 }
 
 *,

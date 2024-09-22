@@ -1,4 +1,6 @@
 <script setup lang="ts">
+import NavHeader from '@/components/NavHeader.vue';
+import ThreeRowsLayout from '@/components/layouts/ThreeRowsLayout.vue'
 import { ethereumInjectionKey } from '@/ethereum';
 import { isEmpty } from '@/strings/validation';
 import { inject, watch } from 'vue';

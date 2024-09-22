@@ -1,12 +1,15 @@
 import './assets/main.css'
 
-import { createApp, provide, readonly, ref } from 'vue'
+import { createApp } from 'vue'
 import { createWebHistory, createRouter } from 'vue-router'
 import { createPinia } from 'pinia'
 import App from './App.vue'
 import protectedRoutes from './routes/protected'
 import sharedRoutes from './routes/shared'
 import publicRoutes from './routes/public'
+import { verifyConfig } from './config'
+
+verifyConfig();
 
 const pinia = createPinia()
 const app = createApp(App)
@@ -18,7 +21,6 @@ const router = createRouter({
 
 app.use(pinia)
 app.use(router)
-app.mount('#app')
 
 app.config.errorHandler = (err) => {
   console.error(err)
@@ -26,3 +28,8 @@ app.config.errorHandler = (err) => {
 
   return false
 }
+
+
+app.mount('#app')
+
+

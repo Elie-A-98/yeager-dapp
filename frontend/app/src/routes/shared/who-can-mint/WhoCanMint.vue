@@ -4,9 +4,10 @@ import { translate } from '@/i18n';
 
 <template>
     <section class="typo root">
-        <h1 class="title">{{ translate('mintin-info.who-can-mint.title') }}</h1>
-        <p class="typo description">{{ translate('mintin-info.who-can-mint.description') }}</p>
+        <h1 class="title">{{ translate('who-can-mint.title') }}</h1>
+        <p class="typo description">{{ translate('who-can-mint.description') }}</p>
     </section>
+    <RouterView />
 </template>
 
 <style scoped>

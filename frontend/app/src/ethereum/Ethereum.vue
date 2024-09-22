@@ -7,6 +7,7 @@ import {
   watch} from 'vue'
 import { MetaMaskSDK, SDKProvider } from '@metamask/sdk'
 import { ethereumInjectionKey, type ConnectionErrorCode, type ProviderInfo } from '.'
+import * as token from '@yeager/nft/token.json' with {type: "json"}
 
 const mmsdk = new MetaMaskSDK({
   dappMetadata: {
@@ -18,16 +19,13 @@ const mmsdk = new MetaMaskSDK({
 const availableProviders = ref<ProviderInfo[]>([])
 
 const provider = ref<SDKProvider>()
+
 const activeAccount = ref<string | undefined>(undefined)
 
-console.log(activeAccount.value)
-watch(activeAccount, () => {
-  console.log(activeAccount.value)
-})
+
 watch(provider, () => {
   //@ts-expect-error no types for this
   provider.value.on('accountsChanged', (accounts: Array<string>) => {
-    console.log('qq')
     activeAccount.value = accounts[0]
   })
   //@ts-expect-error no types for this

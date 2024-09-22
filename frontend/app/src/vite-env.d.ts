@@ -1,4 +1,5 @@
 /// <reference types="vite/client" />
+
 interface EIP6963ProviderInfo {
   rdns: string
   uuid: string
@@ -30,10 +31,14 @@ interface EIP1193Provider {
     request: { method: string; params?: Array<unknown> },
     callback: (error: Error | null, response: unknown) => void
   ) => void
-  request: <T extends unknown = unknown>(request: {
-    method: string
-    params?: Array<unknown>
-  }) => Promise<T>
+  request: <T>(request: { method: string; params?: Array<unknown> }) => Promise<T>
 }
 
-interface ImportMetaEnv extends Record<'VITE_NETWORK' | 'VITE_APP_NAME', string> {}
+type CustomConfig = import('./config').Config
+
+// eslint-disable-next-line @typescript-eslint/no-empty-object-type
+interface ImportMetaEnv extends CustomConfig {}
+
+interface ImportMeta {
+  readonly env: ImportMetaEnv
+}
