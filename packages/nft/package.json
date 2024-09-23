@@ -7,6 +7,10 @@
   "exports": {
     "./*": "./*"
   },
+  "scripts": {
+    "run-net-local": "npx hardhat node",
+    "deploy-contract-local": "npx hardhat run --network localhost ./scripts/deploy.cjs"
+  },
   "dependencies": {
     "@openzeppelin/contracts": "^5.0.2",
     "@remix-project/remixd": "^0.6.36",

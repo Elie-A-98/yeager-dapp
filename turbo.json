@@ -5,6 +5,11 @@
         "build":{
             "dependsOn": ["^build"]
         },
+        "run-net-local":{
+            "cache": false,
+            "persistent": true
+        },
+        "deploy-contract-local":{},
         "dev":{
             "cache": false,
             "persistent": true
