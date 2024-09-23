@@ -50,6 +50,61 @@ Please note that this project took me 5 to 6 days in total. You can see the firs
 
 ## 1. How to Run
 
+### 1.1 Running locally
+
+First please make a free account on Pinata to get the API keys
+
+Please use the same node version by using `nvm use`
+
+You can run all the application locally on dev:
+
+1. Run `yarn run run-net-local`
+
+Save the first private key as it will be used in the next step tp deploy the contract
+Also save the url as it will be used later by metamask
+
+2. Run `yarn run deploy-contract-local`
+
+Then you can find the file `packages/nft/token.json`. Use the `"target"` property to get the deployed contract address
+
+3. Create a .env file in `backend/api` with the following keys
+
+**NODE_ENV**=Development
+
+**PORT**=3000
+
+**PINATA_JWT**=YOUR_API_KEY
+
+**PINATA_GATEWAY_URL**=YOUR_PINATA_GATEWAY (https://salmon-defiant-me....)
+
+**NETWORK**=HardHat
+
+**WALLET_PRIVATE_KEY**= The private key from step 1 
+
+**CONTRACT_ADDRESS**=The contract address from step 2
+
+**INFURA_API_KEY**= YOu don't need a valid key for running locally but you need to provide a value
+
+4. run `yarn run backend-dev`
+
+By now the backend application should be running
+
+5. create a `.env` file under `frontend/app` with the following keys:
+
+**VITE_NETWORK**=Hardhat
+
+**VITE_APP_NAME**=Yeager DApp
+
+**VITE_HOST_URL**=The backend url (http://localhost:3000)
+
+**VITE_CONTRACT_ADDRESS**=The contract address from step 2
+
+**VITE_PINATA_GATEWAY_URL**=Your pinata gateway url
+
+6. run `yarn run frontend-dev`
+
+7. install metamask browser extension and connect to the local network by providing the url from step 1 and the hardhat default chain id (31337)
+
 ## 2. Contract and Solidity
 
 *After confirming with Araceli Martinez that the link provided for the smart contract in the requirement documents is not working, I used an industry standard ERC-721 contract from Oppenzeppelin*
