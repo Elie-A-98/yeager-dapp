@@ -8,12 +8,12 @@ export class NetworkRepository implements INetworkRepository {
   constructor(factory: NetworkConnectionFactory) {
     this._networkConnectionFactory = factory;
   }
-  async mint(mintRequest: MintRequest) {
+  async mint(mintRequest: MintRequest, asset: Blob) {
     const connection = await this._networkConnectionFactory.getOpenConnection();
 
     const { IpfsHash: fileIpfsHash } = await connection.pinata.upload
       .file(
-        new File([mintRequest.metadata.asset], mintRequest.metadata.name, {
+        new File([asset], mintRequest.metadata.name, {
           type: "text/plain",
         })
       )

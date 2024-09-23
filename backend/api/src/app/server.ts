@@ -39,7 +39,7 @@ export class Server {
       if (error instanceof MulterError) {
         return {
           code: "VALIDATION_ERROR",
-          message: error.field,
+          message: error.field || '',
         };
       }
       if (this._appBuilder.services.config.NODE_ENV === "Production") {

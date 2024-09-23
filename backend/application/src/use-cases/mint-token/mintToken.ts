@@ -21,6 +21,6 @@ export class MintTokenCommandHandler
       },
       this._networkRepository
     );
-    await this._networkRepository.mint(mintRequest);
+    await this._networkRepository.mint(mintRequest, dto.asset);
   }
 }
