@@ -1,5 +1,6 @@
 import { translate } from '@/i18n'
-import { FormattedError, type ErrorCode } from '@yeager/dtos/errorCodes.js'
+import { type ErrorCode } from '@yeager/dtos/errorCodes.js'
+import { FormattedError } from '../response-error/FormattedError'
 
 export const $fetch = (...args: Parameters<typeof fetch>) =>
   fetch(...args).then(async (res) => {

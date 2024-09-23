@@ -1,5 +1,5 @@
 import { translate } from '@/i18n'
-import { FormattedError } from '@yeager/dtos/errorCodes.js'
+import { FormattedError } from './FormattedError'
 
 export function isHumanReadable(error: Error): error is FormattedError {
   return (
