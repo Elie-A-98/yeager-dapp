@@ -11,7 +11,7 @@ contract Token is ERC721, ERC721Enumerable, ERC721URIStorage, Ownable {
     uint256 private _nextTokenId;
 
     constructor(address initialOwner)
-        ERC721("Elieum", "ELI")
+        ERC721("TESTIUM", "TST")
         Ownable(initialOwner)
     {}
 

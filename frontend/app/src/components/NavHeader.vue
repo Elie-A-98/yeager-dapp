@@ -8,7 +8,7 @@ import ThemeSwitcher from "@/theme/components/ThemeSwitcher.vue";
     <img
       alt="Eliuem logo"
       class="logo"
-      src="../assets/Elium-logo.webp"
+      src="../assets/Testium-logo.webp"
       width="125"
       height="25"
     />

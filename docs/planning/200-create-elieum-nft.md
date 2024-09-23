@@ -1,4 +1,4 @@
-# 200. [Epic] Create Elieum (ELI)
+# 200. [Epic] Create TESTIUM (TST)
 
 ## Status
 
@@ -6,4 +6,4 @@ Done
 
 ## Description
 
-Create Elieum (ELI) nft and what is necessary to be able to transfer
+Create TESTIUM (TST) nft and what is necessary to be able to transfer

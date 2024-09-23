@@ -6,4 +6,4 @@ Done
 
 ## Description
 
-Create the Token smart contract responsible for minting and transfering ELI tokens
+Create the Token smart contract responsible for minting and transfering TST tokens

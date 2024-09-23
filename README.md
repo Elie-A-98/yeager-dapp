@@ -140,11 +140,11 @@ That being said I left some TODOs and Work do be done in non-functional areas li
 
 The project requirements document states that **users should be able to mint new digital assets**. 
 But allowing anyone to mint new NFT needs some considerations while writing the contract and can significantly devalue the token. 
-For that reason I took the assumption that **users will need to request (through the ui) from the owner of the smart contract to mint them a new Elieum** and link it to a digital asset. The owner can decided the addresses allowed to mint, based on some condition which i will decide later (but keep simple).
+For that reason I took the assumption that **users will need to request (through the ui) from the owner of the smart contract to mint them a new TESTIUM** and link it to a digital asset. The owner can decided the addresses allowed to mint, based on some condition which i will decide later (but keep simple).
 
 ### 5.2 Overview
 
-**Elieum (ELI)** is a new **ERC-721** compliant token (NFT) created using an ERC-721 compliant contract in [packages/nft/contracts/token.sol](./packages/nft/contracts/token.sol)
+**TESTIUM (TST)** is a new **ERC-721** compliant token (NFT) created using an ERC-721 compliant contract in [packages/nft/contracts/token.sol](./packages/nft/contracts/token.sol)
 
 **Users** are able to connect their ethereum wallet, **display a gallery of the digital assets** owned by the connected wallet, **transfer digital assets** to other addresses and **mint new tokens**
 

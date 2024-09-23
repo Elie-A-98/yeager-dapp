@@ -1,4 +1,4 @@
-## Elieum (ELI)
+## TESTIUM (TST)
 
 *Note: The links to the smart contracts in the requirement document I received are not working*
 
