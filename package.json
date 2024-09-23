@@ -21,6 +21,7 @@
     "@commitlint/config-conventional": "^19.5.0",
     "@eslint/js": "^9.10.0",
     "eslint": "^9.10.0",
+    "eslint-config-turbo": "^2.1.2",
     "globals": "^15.9.0",
     "husky": "^9.1.6",
     "pinst": "^3.0.0",
@@ -31,9 +32,11 @@
     "postinstall": "husky",
     "prepack": "pinst --disable",
     "postpack": "pinst --enable",
-    "api-dev": "cd backend/api && yarn run dev"
+    "build": "turbo run build",
+    "backend-build": "turbo run build --filter=@yeager/api"
   },
   "dependencies": {
-    "@yarnpkg/types": "^4.0.0"
+    "@yarnpkg/types": "^4.0.0",
+    "turbo": "^2.1.2"
   }
 }
