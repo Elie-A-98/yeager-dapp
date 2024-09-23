@@ -21,7 +21,6 @@ describe("Minting", () => {
       const metadata: Metadata = {
         name: "TestName",
         description: "TestFile",
-        asset: new Blob([]),
       };
 
       // Act + Assert
@@ -39,7 +38,6 @@ describe("Minting", () => {
       const metadata: Metadata = {
         name: "TestName",
         description: "TestFile",
-        asset: new Blob([]),
       };
 
       // Act + Assert

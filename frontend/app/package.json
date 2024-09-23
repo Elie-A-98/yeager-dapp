@@ -16,7 +16,6 @@
     "format": "prettier --write src/"
   },
   "dependencies": {
-    "@metamask/sdk": "^0.28.4",
     "@yeager/dtos": "workspace:*",
     "@yeager/nft": "workspace:*",
     "ethers": "^6.13.2",

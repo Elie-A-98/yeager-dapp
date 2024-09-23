@@ -1,30 +1,111 @@
 <script setup lang="ts">
-import { translate } from '@/i18n';
-import ThemeSwitcher from '@/theme/components/ThemeSwitcher.vue'
+import { translate } from "@/i18n";
+import ThemeSwitcher from "@/theme/components/ThemeSwitcher.vue";
 </script>
 
 <template>
-    <img alt="Eliuem logo" class="logo" src="../assets/Elium-logo.webp" width="125" height="25" />
+  <div class="root">
+    <img
+      alt="Eliuem logo"
+      class="logo"
+      src="../assets/Elium-logo.webp"
+      width="125"
+      height="25"
+    />
+    <input type="checkbox" id="menu-toggle" />
+    <label for="menu-toggle" class="menu-icon">&#9776;</label>
     <nav class="nav">
-        <slot></slot>
-        <RouterLink to="/gallery">{{ translate('header.gallery') }}</RouterLink>
-        <RouterLink to="/mint">{{ translate('header.mint') }}</RouterLink>
-        <RouterLink to="/who-can-mint">{{ translate('common.who-can-mint') }}</RouterLink>
+      <slot></slot>
+      <RouterLink to="/gallery">{{ translate("header.gallery") }}</RouterLink>
+      <RouterLink to="/mint">{{ translate("header.mint") }}</RouterLink>
+      <RouterLink to="/who-can-mint">{{ translate("common.who-can-mint") }}</RouterLink>
     </nav>
+
     <div class="theme-switcher">
-        <ThemeSwitcher />
+      <ThemeSwitcher />
     </div>
+  </div>
 </template>
 
-
 <style scoped>
+.root {
+  position: sticky;
+  height: 50px;
+  background-color: var(--color-background-mid);
+  display: grid;
+  grid-template-columns: min-content 1fr min-content;
+  grid-template-areas: "left mid right";
+  align-items: center;
+  padding: 0 var(--cell-size);
+}
+
+.logo {
+  grid-area: left;
+}
+
 .theme-switcher {
-    justify-self: end;
+  grid-area: right;
+  justify-self: end;
 }
 
 nav {
-    justify-self: end;
-    display: flex;
-    column-gap: var(--spacing-05);
+  grid-area: mid;
+  margin: 0 var(--spacing-2);
+  justify-self: end;
+  display: flex;
+  column-gap: var(--spacing-05);
+}
+
+.menu-icon {
+  display: none;
+}
+
+#menu-toggle {
+  display: none;
+}
+#menu-icon {
+  display: none;
+}
+
+#menu-toggle:checked ~ nav {
+  transform: scale(1, 1);
+}
+
+@media only screen and (max-width: 600px) {
+  .theme-switcher {
+    grid-area: left;
+  }
+
+  .logo {
+    grid-area: mid;
+    justify-self: center
+  }
+
+  nav {
+    flex-direction: column;
+    position: fixed;
+    margin: 0;
+    top: 50px;
+    left: 0;
+    width: 100vw;
+    z-index: 5;
+    transform: scale(1, 0);
+    transform-origin: top;
+    transition: transform 0.3s ease-in-out;
+    box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
+    background-color: var(--color-background);
+    row-gap: var(--spacing-05);
+  }
+  nav > a {
+    text-align: center;
+    
+  }
+  .menu-icon {
+    display: block;
+    color: var(--color-text);
+    font-size: 28px;
+    cursor: pointer;
+    justify-self: flex-end;
+  }
 }
 </style>

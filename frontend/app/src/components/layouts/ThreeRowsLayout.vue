@@ -16,14 +16,4 @@
 .root {
     height: 100%;
 }
-
-header {
-  position: sticky;
-  height: 50px;
-  background-color: var(--color-background-mid);
-  display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
-  align-items: center;
-  padding: 0 var(--cell-size);
-}
 </style>

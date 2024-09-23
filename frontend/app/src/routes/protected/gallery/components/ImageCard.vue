@@ -1,19 +1,26 @@
 <script setup lang="ts">
+import { useRouter } from 'vue-router';
+import { RouterLink } from 'vue-router'
 export type ImageCardProps = {
+    tokenId: string;
     name: string
     description: string
     imgSrc: string
 }
 const props = defineProps<ImageCardProps>()
 
+const router = useRouter()
 
+const navigateTo = (url: string) => {
+    router.push(url)
+}
 </script>
 
 <template>
-    <a class="root">
+    <RouterLink class="root" href="" :to="`tokens/${props.tokenId}`">
         <img class="image" :src="imgSrc" width="100%" height="100%" />
         <p class="name">{{ props.name }}</p>
-    </a>
+    </RouterLink>
 </template>
 
 <style scoped>
@@ -26,10 +33,10 @@ const props = defineProps<ImageCardProps>()
     display: flex;
     flex-direction: column;
     cursor: pointer;
-    transition: none
+    transition: none;
 }
 
-.root:hover{
+.root:hover {
     transition: transform 0.1s;
     transform: scale(1.05);
 }
@@ -40,7 +47,5 @@ const props = defineProps<ImageCardProps>()
     height: 80%;
 }
 
-.name{
-
-}
+.name {}
 </style>

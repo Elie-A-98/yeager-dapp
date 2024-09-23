@@ -1,23 +1,21 @@
 <script setup lang="ts">
 import { translate } from '@/i18n';
-import { ethereumInjectionKey } from '@/ethereum'
-import { inject, onMounted, ref, watch } from 'vue';
+import { useEthereum } from '@/ethereum'
+import { metamaskProviderInfo } from '@/ethereum/definitions';
 import { computed } from '@vue/reactivity';
-import { metamaskProviderInfo } from '@/ethereum/index'
 import { useRouter } from 'vue-router';
-import { isEmpty } from '@/strings/validation';
+import { useToast } from '@/toast';
 const router = useRouter();
-const ethereum = inject(ethereumInjectionKey)!
-const metamaskDetected = computed(() => ethereum.availableProviders.value.find(x => x.name.toLowerCase() === 'metamask') || false)
-const metaMastStatus = ref<'pending'|'invalid'|'valid'>('valid')
-
-const connect = () => ethereum.connectToProvider(errCode => {
-    if(errCode === 'PENDING'){
-        metaMastStatus.value = 'pending';
-    }else{
-        metaMastStatus.value = 'invalid'
-    }
-});
+const toast = useToast();
+const ethereum = useEthereum();
+// const metaMastStatus = ref<'pending' | 'invalid' | 'valid'>('valid')
+const connect = () => ethereum.connectToProvider().catch(err =>
+    toast.add({
+        type: 'error',
+        message: translate('metamask.install'),
+        position: 'top-center'
+    })
+)
 
 </script>
 
@@ -26,12 +24,12 @@ const connect = () => ethereum.connectToProvider(errCode => {
         <h1 class="prompt">{{ translate('common.connect-to-provider') }}</h1>
         <div class="metamask">
 
-            <button v-if="metamaskDetected && metaMastStatus === 'valid'" @click="connect()">
+            <button v-if="ethereum.metamaskDetected" @click="connect()">
                 <img :src="metamaskProviderInfo.imgSrc" :alt="metamaskProviderInfo.name" />
                 <div>{{ metamaskProviderInfo.name }}</div>
             </button>
-            <p v-else-if="metaMastStatus === 'pending'">{{ translate('connect-wallet.metamask-pending') }}
-            </p>
+            <!-- <p v-else-if="metaMastStatus === 'pending'">{{ translate('connect-wallet.metamask-pending') }}
+            </p> -->
             <p v-else>{{ translate('connect-wallet.no-metamask') }}</p>
         </div>
     </section>

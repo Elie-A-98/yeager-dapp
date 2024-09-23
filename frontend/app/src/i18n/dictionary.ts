@@ -19,7 +19,9 @@ const BASE_LANG = {
   'mint-request.form.name': 'Name',
   'mint-request.form.description': 'Description',
   'mint-request.form.asset': 'Asset',
-  'mint-request.success': 'Token Minted!'
+  'mint-request.success': 'Token Minted!',
+  'metamask.install': 'Please install Metamask',
+  'transfer-asset.title': 'Transfer your asset',
 }
 
 export const dictionary = {
@@ -29,7 +31,7 @@ export const dictionary = {
     'common.min-length-3': 'Should have a min length of 3',
     'common.max-length-30': 'Should have a max length of 30',
     'common.required': 'This is required',
-  'common.invalid-account-address': 'Invalid addreess',
+    'common.invalid-account-address': 'Invalid addreess',
     'common.connect-to-provider': 'Veuillez vous connecter à un fournisseur',
     'common.who-can-mint': 'Can I mint ?',
     'who-can-mint.title': 'Qui peut frapper ?',
@@ -45,7 +47,10 @@ export const dictionary = {
     'mint-request.form.name': 'Name',
     'mint-request.form.description': 'Description',
     'mint-request.form.asset': 'Asset',
-    'mint-request.success': 'Token Minted!'
+    'mint-request.success': 'Token Minted!',
+    'metamask.install': 'Please install Metamask',
+  'transfer-asset.title': 'Transfer your asset',
+
   }
   // will ensure we have all the sentences implemented in all the languages that we support
 } as const satisfies Record<string, Record<keyof typeof BASE_LANG, string>>

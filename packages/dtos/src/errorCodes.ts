@@ -1,9 +1,14 @@
-
 export type ErrorCode = 'BUSINESS_ERROR' | 'VALIDATION_ERROR' | 'SERVER'
 
-export type ResponseError =
-  | {
-      code: ErrorCode;
-      message: string | undefined;
-    }
-  | undefined;
+export class FormattedError extends Error {
+  readonly code: ErrorCode;
+  readonly message: string;
+
+  constructor(code: ErrorCode, message: string){
+    super(message);
+    this.code = code;
+    this.message = message
+  }
+}
+
+export type ResponseError = FormattedError | undefined

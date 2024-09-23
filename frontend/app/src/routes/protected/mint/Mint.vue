@@ -4,17 +4,18 @@ import TextInput from '@/form/inputs/TextInput.vue';
 import { translate } from '@/i18n';
 import FileInput from '@/form/inputs/FileInput.vue';
 import { type MintTokenRequestDto } from '@yeager/dtos/mintTokenDto.js';
-import { useEthereumAccount } from '@/ethereum/useEthereum';
+import { useConnectedAccount } from '@/ethereum';
 import { z } from 'zod';
 import mintRequest from '@/main-host/apis/mintRequest';
 import { getHumanReadableError } from '@/main-host/response-error/paser';
-import { onMounted } from 'vue';
+import { useToast } from '@/toast';
 
 type FormData = Omit<MintTokenRequestDto, 'asset'> & {
     asset: string
 }
 
-const account = useEthereumAccount();
+const account = useConnectedAccount();
+const toast = useToast()
 
 const form = useForm<FormData>({
     initialValues: {
@@ -41,19 +42,28 @@ const onSubmit = async (event: Event, data: FormData) => {
         description: data.description,
         asset: file
     })
-        .then(_ => {
-            // toast.success(translate('mint-request.success'))
+        .then((res) => {
+            if (res.ok) {
+                toast.add({
+                    type: 'success',
+                    position: 'top-center',
+                    message: translate('mint-request.success')
+                })
+            }
         })
         .catch(err => {
-            // toast.error(getHumanReadableError(err))
+            toast.add({
+                type: 'error',
+                position: 'top-center',
+                message: getHumanReadableError(err)
+            })
         })
 }
-
 </script>
 
 <template>
-    <section class="root" id="mint-new-asset" aria-label="mint new asset" role="section">
-        <h1 class="title">{{ translate('mint-request.title') }}</h1>
+    <section id="mint-new-asset" aria-label="mint new asset" role="section">
+        <h1 class="title">{{ translate("mint-request.title") }}</h1>
         <form @submit.prevent="(event) => form.handleSubmit((data) => onSubmit(event, data))">
             <TextInput :type="'text'" :disabled="form.formState.isSubmitting" :title="'Name'" :error="form.errors.name"
                 :controller="form.register('name')" />

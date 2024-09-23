@@ -78,7 +78,7 @@ provide(toastInjectionKey, {
 
 <style scoped>
 aside {
-    position: absolute;
+    position: fixed;
     top: 0;
     bottom: 0;
     left: 0;
@@ -117,6 +117,8 @@ ul {
 }
 
 .toast {
+    text-align: center;
+    font-size: var(--fonts-size-sm);
     margin-bottom: var(--spacing-05);
     width: "100%";
     max-width: 300px;

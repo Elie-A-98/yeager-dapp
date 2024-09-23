@@ -9,7 +9,6 @@ import ToastProvider from './toast/ToastProvider.vue';
 <template>
   <ThemeProvider>
     <ToastProvider>
-
       <Ethereum>
         <ThreeRowsLayout>
           <template v-slot:header>

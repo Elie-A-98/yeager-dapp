@@ -2,53 +2,49 @@
 import { translate } from '@/i18n';
 import type { ImageCardProps } from './components/ImageCard.vue';
 import ImageCard from './components/ImageCard.vue';
-import {ref} from 'vue'
+import { onMounted, ref } from 'vue'
+import { useGetAllURIsAndTokenIds } from '@/ethereum/contract/useGetAllURIs';
+import { useConnectedAccount } from '@/ethereum';
+import { getImageUrlFromMetadata, getMetadataFromUri, type Metadata } from '@/ethereum/ipfs';
+import { useToast } from '@/toast';
 
-const assets = [
-    {
-        name: 'asd',
-        description: 'asdas',
-        imgSrc: 'https://letsenhance.io/static/8f5e523ee6b2479e26ecc91b9c25261e/1015f/MainAfter.jpg'
-    },
-    {
-        name: 'asd',
-        description: 'asdas',
-        imgSrc: 'https://images.pexels.com/photos/674010/pexels-photo-674010.jpeg?cs=srgb&dl=pexels-anjana-c-169994-674010.jpg&fm=jpg'
-    },
-    {
-        name: 'asd',
-        description: 'asdas',
-        imgSrc: 'https://letsenhance.io/static/8f5e523ee6b2479e26ecc91b9c25261e/1015f/MainAfter.jpg'
-    },
-    {
-        name: 'asd',
-        description: 'asdas',
-        imgSrc: 'https://letsenhance.io/static/8f5e523ee6b2479e26ecc91b9c25261e/1015f/MainAfter.jpg'
-    },
-    {
-        name: 'asd',
-        description: 'asdas',
-        imgSrc: 'https://letsenhance.io/static/8f5e523ee6b2479e26ecc91b9c25261e/1015f/MainAfter.jpg'
-    },
-    {
-        name: 'asd',
-        description: 'asdas',
-        imgSrc: 'https://letsenhance.io/static/8f5e523ee6b2479e26ecc91b9c25261e/1015f/MainAfter.jpg'
-    },
-    {
-        name: 'asd',
-        description: 'asdas',
-        imgSrc: 'https://letsenhance.io/static/8f5e523ee6b2479e26ecc91b9c25261e/1015f/MainAfter.jpg'
-    }
-] satisfies ImageCardProps[]
+type Asset = Metadata & { imgSrc: string, tokenId: string }
+
+const toast = useToast();
+
+const account = useConnectedAccount();
+const urisGetter = useGetAllURIsAndTokenIds({
+    from: account.value
+});
+
+const allMetadata = ref<(Asset)[]>([])
+
+onMounted(async () => {
+    const urisAndTokenIds = await urisGetter.call()
+    const promises: Promise<Asset>[] = []
+    urisAndTokenIds.forEach(({ uri, tokenId }) => {
+        promises.push(getMetadataFromUri(uri).then(async singleMetadata => { const imgUrl = await getImageUrlFromMetadata(singleMetadata); return { ...singleMetadata, imgSrc: imgUrl, tokenId: String(tokenId) } as Metadata & { imgSrc: string; tokenId: string } }))
+    })
+
+    await Promise.all(promises)
+    .then(res => {
+        allMetadata.value = res
+    })
+    .catch(err => toast.add({
+        type: 'error',
+        message: translate('common.problem-occured'),
+        position: 'top-center'
+    }))
+})
 </script>
 
 <template>
     <section id="assets-gallery" aria-label="assets gallery" role="section">
         <h1 class="title">{{ translate('gallery.title') }}</h1>
         <ul class="images-container">
-            <li v-for="asset in assets">
-                <ImageCard class="image" :name="asset.name" :description="asset.description" :img-src="asset.imgSrc" />
+            <li v-for="metdata in allMetadata">
+                <ImageCard class="image" :token-id="metdata.tokenId" :name="metdata.name"
+                    :description="metdata.description" :img-src="metdata.imgSrc" />
             </li>
         </ul>
     </section>
@@ -59,7 +55,10 @@ const assets = [
     margin-top: var(--spacing-2);
     text-align: center;
 }
-ul.images-container{
+
+ul.images-container {
+    margin: auto;
+    max-width: 100vh;
     list-style: none;
     padding: 0;
     margin-top: var(--spacing-2);
@@ -67,7 +66,8 @@ ul.images-container{
     grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
     gap: var(--spacing-1);
 }
-.image{
+
+.image {
     width: 100%;
     aspect-ratio: 1;
 }

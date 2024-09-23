@@ -18,7 +18,6 @@ export class MintTokenCommandHandler
       {
         name,
         description,
-        asset: dto.asset,
       },
       this._networkRepository
     );
