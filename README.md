@@ -54,7 +54,7 @@ Please note that this project took me 5 to 6 days in total. You can see the firs
 
 First please make a free account on Pinata to get the API keys
 
-Please use the same node version by using `nvm use`
+Please use the same node version by using `nvm use` and do `yarn install` in the root folder
 
 You can run all the application locally on dev:
 
