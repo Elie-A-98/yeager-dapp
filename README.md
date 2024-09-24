@@ -4,6 +4,11 @@
 
 [1. How to Run](#1-how-to-run)
 
+&nbsp;&nbsp;[1.1 Running Locally](#11-running-locally)
+
+&nbsp;&nbsp;[1.2 Running on Sepolia](#12-running-on-sepolia)
+
+
 [2. Contract and Solidity](#2-contract-and-solidity)
 
 [3. Requirements](#3-requirements)
@@ -60,8 +65,14 @@ You can run all the application locally on dev:
 
 1. Run `yarn run run-net-local`
 
-Save the first private key as it will be used in the next step tp deploy the contract
+Save the first private key and address
 Also save the url as it will be used later by metamask
+
+Create a `.env` file under `packages/nft` with the following keys
+
+PRIVATE_KEY = 
+
+ADDRESS = first address in the list
 
 2. Run `yarn run deploy-contract-local`
 
@@ -104,6 +115,20 @@ By now the backend application should be running
 6. run `yarn run frontend-dev`
 
 7. install metamask browser extension and connect to the local network by providing the url from step 1 and the hardhat default chain id (31337)
+
+### 1.2 Running on Sepolia
+
+1. Deploy the contract to sepolia net and save your private key and address of the account used as thie contract owner
+
+Next starting from step 3, repeat the same steps from Running locally but change the following keys in `.env` under `backend/api`:
+
+**NETWORK**=Sepolia
+
+**WALLET_PRIVATE_KEY**= the owner private key
+
+**CONTRACT_ADDRESS**= the deployed contract address
+
+**INFURA_API_KEY**= A real infura api key
 
 ## 2. Contract and Solidity
 
