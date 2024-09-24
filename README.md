@@ -74,7 +74,7 @@ PRIVATE_KEY =
 
 ADDRESS = first address in the list
 
-2. Run `yarn run deploy-contract-local`
+2. Run `yarn run deploy-contract-local` in another terminal (use `nvm use` if prompted)
 
 Then you can find the file `packages/nft/token.json`. Use the `"target"` property to get the deployed contract address
 
@@ -82,11 +82,11 @@ Then you can find the file `packages/nft/token.json`. Use the `"target"` propert
 
 **NODE_ENV**=Development
 
-**PORT**=3000
+**PORT**= 3000
 
-**PINATA_JWT**=YOUR_API_KEY
+**PINATA_JWT**= YOUR_API_KEY
 
-**PINATA_GATEWAY_URL**=YOUR_PINATA_GATEWAY (https://salmon-defiant-me....)
+**PINATA_GATEWAY_URL**= YOUR_PINATA_GATEWAY (https://salmon-defiant-me....)
 
 **NETWORK**=HardHat
 
@@ -96,11 +96,9 @@ Then you can find the file `packages/nft/token.json`. Use the `"target"` propert
 
 **INFURA_API_KEY**= YOu don't need a valid key for running locally but you need to provide a value
 
-4. run `yarn run backend-dev`
+**WEB_APP_URL**= This is filled later when you run the front end
 
-By now the backend application should be running
-
-5. create a `.env` file under `frontend/app` with the following keys:
+4. create a `.env` file under `frontend/app` with the following keys:
 
 **VITE_NETWORK**=Hardhat
 
@@ -112,9 +110,15 @@ By now the backend application should be running
 
 **VITE_PINATA_GATEWAY_URL**=Your pinata gateway url
 
-6. run `yarn run frontend-dev`
+5. run `yarn run frontend-dev` in a seperate terminal
 
-7. install metamask browser extension and connect to the local network by providing the url from step 1 and the hardhat default chain id (31337)
+6. run `yarn run backend-dev` in a seperate temrinal
+
+If needed, in the `backend/api/.env` file you created previously replace the **WEB_APP_URL** key with the url of the front end app (by default `http://localhost:5173/`) and rerun `yarn run backend-dev`
+
+By now the backend and frontend applications should be running
+
+8. install metamask browser extension and connect to the local network by providing the url from step 1 and the hardhat default chain id (31337)
 
 ### 1.2 Running on Sepolia
 

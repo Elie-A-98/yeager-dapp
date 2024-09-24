@@ -13,7 +13,7 @@ export const envConfigSchema = z.object({
     PINATA_JWT: z.string(),
     PINATA_GATEWAY_URL: z.string(),
     INFURA_API_KEY: z.string(),
-    NETWORK: z.enum(['HardHat', 'Sepolia']),
+    NETWORK: z.enum(['Hardhat', 'Sepolia']),
     WALLET_PRIVATE_KEY: z.string(),
     CONTRACT_ADDRESS: z.string().refine(val => ethers.isAddress(val),{
         message: `CONTRACT_ADDRESS is not a valid address`
