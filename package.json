@@ -6,12 +6,20 @@
   "author": "Elie <elieatamech@hotmail.com>",
   "private": true,
   "type": "module",
-  "workspaces": [
-    "frontend/app",
-    "packages/*",
-    "backend/*"
-  ],
-  "packageManager": "yarn@4.5.0",
+  "workspaces": {
+    "packages": [
+      "frontend/app",
+      "packages/*",
+      "backend/*"
+    ],
+    "nohoist": [
+      "**/@yeager/domain",
+      "**/@yeager/application**",
+      "**/@yeager/api**",
+      "**/@yeager/web-client-app**"
+    ]
+  },
+  "packageManager": "yarn@1.22.22",
   "engines": {
     "node": "20.17.0",
     "npm": "10.7.0"
@@ -32,15 +40,16 @@
     "postinstall": "husky",
     "prepack": "pinst --disable",
     "postpack": "pinst --enable",
-    "build": "turbo run build",
     "backend-build": "turbo run build --filter=@yeager/api",
     "backend-dev": "turbo run dev --filter=@yeager/api",
     "frontend-dev": "turbo run dev --filter=@yeager/web-client-app",
+    "frontend-build": "turbo run build --filter=@yeager/web-client-app",
     "run-net-local": "turbo run run-net-local",
     "deploy-contract-local": "turbo run deploy-contract-local"
   },
   "dependencies": {
     "@yarnpkg/types": "^4.0.0",
-    "turbo": "^2.1.2"
+    "turbo": "^2.1.2",
+    "vercel": "^37.5.4"
   }
 }

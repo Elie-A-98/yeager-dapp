@@ -10,13 +10,17 @@ import {ResponseError} from '@yeager/dtos/errorCodes.js'
 
 export class Server {
   private _appBuilder: AppBuilder;
-  private app: Application;
+  public readonly app: Application;
   constructor(appBuilder: AppBuilder) {
     this._appBuilder = appBuilder;
     this.app = express();
 
     this.app.use(helmet());
-    this.app.use(cors());
+    this.app.use(
+      cors({
+        origin: this._appBuilder.services.config.WEB_APP_URL,
+      })
+    );
     this.app.use(express.json());
     this.app.use(express.urlencoded({ extended: true }));
 

@@ -7,6 +7,7 @@ import {ethers} from 'ethers'
 dotenv.config()
 
 export const envConfigSchema = z.object({
+    WEB_APP_URL: z.string(),
     NODE_ENV: z.enum(['Development', 'Production']),
     PORT: z.string(),
     PINATA_JWT: z.string(),

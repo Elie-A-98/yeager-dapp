@@ -1,14 +1,13 @@
 {
   "name": "@yeager/api",
   "version": "1.0.0",
-  "main": "index.js",
   "license": "MIT",
   "private": true,
   "type": "module",
   "scripts": {
     "build": "yarn run eslint . && tsc",
     "start": "node dist/start.js",
-    "dev": "tsc && (tsc --watch --preserveWatchOutput & node --inspect-brk --inspect --enable-source-maps --watch dist/start.js)"
+    "dev": "tsc && (tsc --watch --preserveWatchOutput & node  --enable-source-maps --watch dist/index.js)"
   },
   "devDependencies": {
     "@eslint/js": "^9.10.0",
@@ -23,10 +22,10 @@
   "dependencies": {
     "@types/express": "^4.17.21",
     "@types/node": "^22.5.4",
-    "@yeager/application": "workspace:*",
-    "@yeager/domain": "workspace:*",
-    "@yeager/dtos": "workspace:*",
-    "@yeager/nft": "workspace:*",
+    "@yeager/application": "1.0.0",
+    "@yeager/domain": "1.0.0",
+    "@yeager/dtos": "1.0.0",
+    "@yeager/nft": "1.0.0",
     "cors": "^2.8.5",
     "dotenv": "^16.4.5",
     "ethers": "^6.13.2",
