@@ -17,7 +17,7 @@ export class NetworkConnectionFactory {
 
     this.connection = undefined;
 
-    if (this._config.NETWORK === "HardHat") {
+    if (this._config.NETWORK === "Hardhat") {
       this.provider = new ethers.JsonRpcProvider(
         `${this._config.hardHat.url}:${this._config.hardHat.port}`
       );
