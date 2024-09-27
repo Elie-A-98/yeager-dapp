@@ -5,10 +5,11 @@
   "license": "MIT",
   "private": true,
   "type": "module",
+  "packageManager": "yarn@4.5.0",
   "scripts": {
     "build": "yarn run eslint . && tsc",
-    "start": "node dist/start.js",
-    "dev": "tsc && (tsc --watch --preserveWatchOutput & node --inspect-brk --inspect --enable-source-maps --watch dist/start.js)"
+    "dev": "tsc && (tsc --watch --preserveWatchOutput & node --enable-source-maps --watch dist/start.js)",
+    "start": "node dist/start.js"
   },
   "devDependencies": {
     "@eslint/js": "^9.10.0",

@@ -35,6 +35,7 @@
     "build": "turbo run build",
     "backend-build": "turbo run build --filter=@yeager/api",
     "backend-dev": "turbo run dev --filter=@yeager/api",
+    "backend-start": "turbo run start --filter=@yeager/api",
     "frontend-dev": "turbo run dev --filter=@yeager/web-client-app",
     "run-net-local": "turbo run run-net-local",
     "deploy-contract-local": "turbo run deploy-contract-local"
