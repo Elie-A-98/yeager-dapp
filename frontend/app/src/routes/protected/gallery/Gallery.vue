@@ -1,6 +1,5 @@
 <script setup lang="ts">
 import { translate } from '@/i18n';
-import type { ImageCardProps } from './components/ImageCard.vue';
 import ImageCard from './components/ImageCard.vue';
 import { onMounted, ref } from 'vue'
 import { useGetAllURIsAndTokenIds } from '@/ethereum/contract/useGetAllURIs';
@@ -20,21 +19,27 @@ const urisGetter = useGetAllURIsAndTokenIds({
 const allMetadata = ref<(Asset)[]>([])
 
 onMounted(async () => {
-    const urisAndTokenIds = await urisGetter.call()
-    const promises: Promise<Asset>[] = []
-    urisAndTokenIds.forEach(({ uri, tokenId }) => {
-        promises.push(getMetadataFromUri(uri).then(async singleMetadata => { const imgUrl = await getImageUrlFromMetadata(singleMetadata); return { ...singleMetadata, imgSrc: imgUrl, tokenId: String(tokenId) } as Metadata & { imgSrc: string; tokenId: string } }))
-    })
+    try {
+        const urisAndTokenIds = await urisGetter.call()
+        const promises: Promise<Asset>[] = []
+        urisAndTokenIds.forEach(({ uri, tokenId }) => {
+            promises.push(getMetadataFromUri(uri).then(async metadata => {
+                const imgSrc = await getImageUrlFromMetadata(metadata);
+                return { ...metadata, imgSrc, tokenId: String(tokenId) }
+            }))
+        })
 
-    await Promise.all(promises)
-    .then(res => {
-        allMetadata.value = res
-    })
-    .catch(err => toast.add({
-        type: 'error',
-        message: translate('common.problem-occured'),
-        position: 'top-center'
-    }))
+        await Promise.all(promises)
+            .then(res => {
+                allMetadata.value = res
+            })
+    } catch (err) {
+        toast.add({
+            type: 'error',
+            message: translate('common.problem-occured'),
+            position: 'top-center'
+        })
+    }
 })
 </script>
 

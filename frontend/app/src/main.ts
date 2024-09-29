@@ -9,7 +9,7 @@ import sharedRoutes from './routes/shared'
 import publicRoutes from './routes/public'
 import { verifyConfig } from './config'
 
-verifyConfig();
+verifyConfig()
 
 const pinia = createPinia()
 const app = createApp(App)
@@ -23,13 +23,12 @@ app.use(pinia)
 app.use(router)
 
 app.config.errorHandler = (err) => {
-  console.error(err)
-  router.push('/problem-occured')
+  if (import.meta.env.DEV) {
+    alert('error. check console')
+    console.error(err)
+  }
 
   return false
 }
 
-
 app.mount('#app')
-
-
