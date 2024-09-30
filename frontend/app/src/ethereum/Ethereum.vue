@@ -26,9 +26,9 @@ const connectToProvider = async () => {
         activeAccount.value = await signer.getAddress()
       }
     }
-      window.ethereum.on('accountsChanged', function (accounts: string[]) {
-        updateAccount(accounts[0])
-      })
+    window.ethereum.on('accountsChanged', function (accounts: string[]) {
+      updateAccount(accounts[0])
+    })
     return provider.send("eth_requestAccounts", []).then(async (accounts: string[]) => {
       updateAccount(accounts[0])
     })
@@ -64,5 +64,8 @@ provide(ethereumInjectionKey, {
 </script>
 
 <template>
-  <slot></slot>
+  <div :key="activeAccount">
+    <slot></slot>
+  </div>
+
 </template>

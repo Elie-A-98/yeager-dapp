@@ -7,9 +7,9 @@ import { useRouter } from 'vue-router';
 const ethereum = useEthereum()
 const router = useRouter();
 
-const shouldRender = computed(() => isAccountConnected(ethereum.account))
+const isConnected = computed(() => isAccountConnected(ethereum.account))
 
-if (!isAccountConnected(ethereum.account)) {
+if (!isConnected.value) {
     const redirectTo = router.currentRoute.value.fullPath.slice(1)
     router.replace(`/connect-wallet${!isEmpty(redirectTo) ? `?redirect=${redirectTo}` : ''}`)
 }
@@ -17,5 +17,5 @@ if (!isAccountConnected(ethereum.account)) {
 </script>
 
 <template>
-    <RouterView v-if="shouldRender" :key="ethereum.account.value" />
+    <RouterView v-if="isConnected" />
 </template>
