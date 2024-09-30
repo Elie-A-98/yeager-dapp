@@ -11,7 +11,6 @@ import { verifyConfig } from './config'
 
 verifyConfig()
 
-const pinia = createPinia()
 const app = createApp(App)
 
 const router = createRouter({
@@ -19,7 +18,6 @@ const router = createRouter({
   routes: [...protectedRoutes, ...sharedRoutes, ...publicRoutes]
 })
 
-app.use(pinia)
 app.use(router)
 
 app.config.errorHandler = (err) => {
