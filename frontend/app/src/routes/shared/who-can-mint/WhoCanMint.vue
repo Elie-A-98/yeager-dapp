@@ -3,9 +3,9 @@ import { translate } from '@/i18n';
 </script>
 
 <template>
-    <section class="typo root">
+    <section class="root">
         <h1 class="title">{{ translate('who-can-mint.title') }}</h1>
-        <p class="typo description">{{ translate('who-can-mint.description') }}</p>
+        <p class="description">{{ translate('who-can-mint.description') }}</p>
     </section>
     <RouterView />
 </template>
