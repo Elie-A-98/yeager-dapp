@@ -8,9 +8,6 @@ export default [
   {
     path: '/',
     component: Protected,
-    beforeEnter(){
-      
-    },
     children: [
       {
         path: 'gallery',

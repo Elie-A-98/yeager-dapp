@@ -2,6 +2,7 @@ import type { RouterOptions } from 'vue-router'
 import ProblemOccured from './ProblemOccured.vue'
 import WhoCanMint from './who-can-mint/WhoCanMint.vue'
 import Shared from './Shared.vue'
+import Home from './Home.vue'
 /**
  * Shared routes are routes that an authorized or unauthorized use can access
  */
@@ -11,6 +12,10 @@ export default [
     path: '/',
     component: Shared,
     children: [
+      {
+        path: '',
+        component: Home
+      },
       {
         path: 'who-can-mint',
         component: WhoCanMint

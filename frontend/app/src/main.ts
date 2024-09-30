@@ -14,14 +14,13 @@ const app = createApp(App)
 
 const router = createRouter({
   history: createWebHistory(),
-  routes: [...protectedRoutes, ...sharedRoutes, ...publicRoutes]
+  routes: [...sharedRoutes, ...publicRoutes, ...protectedRoutes]
 })
 
 app.use(router)
 
 app.config.errorHandler = (err) => {
   if (import.meta.env.DEV) {
-    alert('error. check console')
     console.error(err)
   }
 
