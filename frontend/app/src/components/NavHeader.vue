@@ -30,13 +30,14 @@ import ThemeSwitcher from "@/theme/components/ThemeSwitcher.vue";
 <style scoped>
 .root {
   position: sticky;
-  height: 50px;
-  background-color: var(--color-background-mid);
+  height: var(--spacing-2);
   display: grid;
   grid-template-columns: min-content 1fr min-content;
   grid-template-areas: "left mid right";
   align-items: center;
   padding: 0 var(--cell-size);
+  backdrop-filter: blur(4px);
+  box-shadow: 0 0 10px var(--color-primary);
 }
 
 .logo {

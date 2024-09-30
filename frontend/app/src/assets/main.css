@@ -12,13 +12,13 @@ p {
 section {
   margin: auto;
   max-width: 75%;
-  padding: var(--spacing-one) var(--spacing-two);
+  padding: var(--spacing-1) var(--spacing-2);
 }
 
 @media screen and (max-width: 325px) {
   section {
     max-width: 95%;
-  padding: var(--spacing-one) var(--spacing-two);
+  padding: var(--spacing-1) var(--spacing-2);
   }
 }
 
