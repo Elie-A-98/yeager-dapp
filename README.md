@@ -44,9 +44,9 @@
 
 &nbsp;&nbsp;&nbsp;&nbsp;[6.2.2 C2 Container](#622-c2-container)
 
-&nbsp;&nbsp;&nbsp;&nbsp;[6.2.3 Back-End](#623-backend)
+&nbsp;&nbsp;&nbsp;&nbsp;[6.2.3 Back-End](#623-back-end)
 
-&nbsp;&nbsp;&nbsp;&nbsp;[6.2.4 Front-End](#624-frontend)
+&nbsp;&nbsp;&nbsp;&nbsp;[6.2.4 Front-End](#624-front-end)
 
 [7. Planning](#7-planning)
 
@@ -58,9 +58,9 @@
 
 # Announcement
 
-Please note that this project took me 1 week in total. I took some time to research and I was working on another some projects in parallel which forced me to shift my focus away at some times
+Please note that this project took me 1 week in total. I took some time to research and I was working on another project in parallel which forced me to shift my focus away at some times
 
-**That being said please I gave this project high priority and attention. I invested time to ensure that my skills were fully represented before sumitting and that I am happy with the result**
+**That being said I gave this project priority and attention. I invested time to ensure that my skills were fully represented before sumitting and that I am happy with the result**
 
 # Live Application
 
@@ -350,11 +350,11 @@ I will only draw the C1 and C2 level. This is actually a recommendation from the
 
 ### 6.2.3 Back-End
 
-[Back-End Architecture](./server/README.MD)
+[Back-End Architecture](./backend/README.MD)
 
 ### 6.2.4 Front-End
 
-[Front-End Architecture](./client/README.md)
+[Front-End Architecture](./frontend/app/README.md)
 
 
 ## 7 Planning
