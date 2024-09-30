@@ -12,7 +12,7 @@ const ethereum = useEthereum();
 const connect = () => ethereum.connectToProvider().catch(err =>
     toast.add({
         type: 'error',
-        message: translate('metamask.install'),
+        message: translate('connect-wallet.cant-connect-to-metamask'),
         position: 'top-center'
     })
 )
@@ -28,9 +28,6 @@ const connect = () => ethereum.connectToProvider().catch(err =>
                 <img :src="metamaskProviderInfo.imgSrc" :alt="metamaskProviderInfo.name" />
                 <div>{{ metamaskProviderInfo.name }}</div>
             </button>
-            <!-- <p v-else-if="metaMastStatus === 'pending'">{{ translate('connect-wallet.metamask-pending') }}
-            </p> -->
-            <p v-else>{{ translate('connect-wallet.no-metamask') }}</p>
         </div>
     </section>
 </template>
