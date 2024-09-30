@@ -2,7 +2,6 @@ import './assets/main.css'
 
 import { createApp } from 'vue'
 import { createWebHistory, createRouter } from 'vue-router'
-import { createPinia } from 'pinia'
 import App from './App.vue'
 import protectedRoutes from './routes/protected'
 import sharedRoutes from './routes/shared'
