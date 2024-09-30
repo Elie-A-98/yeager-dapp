@@ -41,6 +41,6 @@ USER userjs
 
 COPY --from=installer --chown=userjs:nodejs /app/ .
 
-EXPOSE 3000
+EXPOSE 80
 
 CMD yarn run backend-start

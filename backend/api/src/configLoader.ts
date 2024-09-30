@@ -9,7 +9,6 @@ dotenv.config()
 export const envConfigSchema = z.object({
     WEB_APP_URL: z.string(),
     NODE_ENV: z.enum(['Development', 'Production']),
-    PORT: z.string(),
     PINATA_JWT: z.string(),
     PINATA_GATEWAY_URL: z.string(),
     INFURA_API_KEY: z.string(),
