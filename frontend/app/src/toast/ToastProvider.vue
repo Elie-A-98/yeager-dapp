@@ -92,6 +92,7 @@ ul {
     list-style: none;
     position: absolute;
     z-index: 10;
+    padding: 0;
 }
 
 .top-center {
