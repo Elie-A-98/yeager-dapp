@@ -1,5 +1,4 @@
 <script setup lang="ts">
-import { useRouter } from 'vue-router';
 import { RouterLink } from 'vue-router'
 export type ImageCardProps = {
     tokenId: string;
@@ -9,11 +8,6 @@ export type ImageCardProps = {
 }
 const props = defineProps<ImageCardProps>()
 
-const router = useRouter()
-
-const navigateTo = (url: string) => {
-    router.push(url)
-}
 </script>
 
 <template>
@@ -34,6 +28,7 @@ const navigateTo = (url: string) => {
     flex-direction: column;
     cursor: pointer;
     transition: none;
+    box-shadow: 0 5px 10px var(--color-primary);
 }
 
 .root:hover {
