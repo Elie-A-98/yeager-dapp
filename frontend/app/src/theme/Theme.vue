@@ -5,21 +5,21 @@ import { themeInjectionKey, type Theme } from '.';
 const key = 'theme'
 const theme = ref<Theme>('light')
 
-onMounted(() => {
-    const savedTheme = localStorage.getItem(key);
-    if (savedTheme !== null) {
-        theme.value = savedTheme as Theme
-    }
-})
+const setTheme = (value: Theme) => {
+    localStorage.setItem(key, value)
+    theme.value = value
+    document.body.setAttribute('data-theme', theme.value)
+}
+
+
+const savedTheme = localStorage.getItem(key);
+if (savedTheme !== null) {
+    setTheme(savedTheme as Theme)
+}
 
 provide(themeInjectionKey, {
     theme,
-    setTheme: (value) => theme.value = value
-})
-
-watch(theme, ()=>{
-    localStorage.setItem(key, theme.value)
-    document.body.setAttribute('data-theme', theme.value)
+    setTheme
 })
 </script>
 

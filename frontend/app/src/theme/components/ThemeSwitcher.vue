@@ -2,13 +2,12 @@
 import { inject, ref, watch, watchEffect } from 'vue';
 import { themeInjectionKey, type Theme } from '..';
 
-const injectedTheme = inject(themeInjectionKey)
+const injectedTheme = inject(themeInjectionKey)!
 
-const checked = ref(false)
+const checked = ref(injectedTheme.theme.value === 'light')
 
-
-watchEffect(() => {
-    injectedTheme?.setTheme(checked.value ? 'dark' : 'light')
+watch(checked, () => {
+    injectedTheme.setTheme(checked.value ? 'light' : 'dark')
 })
 
 </script>
