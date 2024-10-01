@@ -5,6 +5,7 @@ import { z } from 'zod'
 export interface Config extends  z.infer<typeof configSchema>{}
 
 const configSchema = z.object({
+  VITE_NODE_ENV: z.enum(['Development', 'Production']),
   VITE_NETWORK: z.enum(['Hardhat', 'Sepolia']),
   VITE_APP_NAME: z.string(),
   VITE_HOST_URL: z.string(),

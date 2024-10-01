@@ -42,8 +42,8 @@ export function parseI18nUrl(fullPath: string | I18nPath, lang: Languages) {
 
 export const saveLang = (lang: Languages) => localStorage.setItem(LANG_KEY, lang)
 export const getSavedLang = (): Languages => {
-  const savedLang = localStorage.getItem(LANG_KEY) as Languages | undefined
-  if (savedLang !== undefined) return savedLang
+  const savedLang = localStorage.getItem(LANG_KEY)
+  if (savedLang !== null) return savedLang as Languages
 
   const userLanguage = navigator.language.substring(0, 2).toLowerCase()
   return isSupportedLanguage(userLanguage) ? userLanguage : 'en'

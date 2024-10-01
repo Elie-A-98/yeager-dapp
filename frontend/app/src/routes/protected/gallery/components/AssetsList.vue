@@ -38,6 +38,7 @@ try {
         message: translate('common.problem-occured'),
         position: 'top-center'
     })
+    throw err
 }
 </script>
 

@@ -22,7 +22,7 @@ app.use(i18n, {
 })
 
 app.config.errorHandler = (err) => {
-  if (import.meta.env.DEV) {
+  if (import.meta.env.VITE_NODE_ENV === 'Development') {
     console.error(err)
   }
 
