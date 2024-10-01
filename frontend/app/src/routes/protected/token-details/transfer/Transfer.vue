@@ -18,7 +18,7 @@ const onSubmit = (_: Event, data: TransferRequest) => {
     return transfer.call({
         to: data.to,
         tokenId: data.tokenId
-    }).catch(err => {
+    }).catch(_ => {
         toast.add({
             type: 'error',
             message: translate('common.problem-occured'),
@@ -29,24 +29,34 @@ const onSubmit = (_: Event, data: TransferRequest) => {
 </script>
 
 <template>
-    <section class="transfer-root" id="transfer-asset" aria-label="transfer your asset" role="section">
-        <h1 class="title">{{ translate('transfer-asset.title') }}</h1>
-        <form @submit.prevent="(event) => form.handleSubmit((data) => onSubmit(event, data))">
-            <TextInput :type="'text'" :disabled="form.formState.isSubmitting" :title="'To'" :error="form.errors.to"
-                :controller="form.register('to')" />
-            <button type="submit" :disabled="form.formState.isSubmitting">Submit</button>
-        </form>
-    </section>
+  <section
+    class="transfer-root"
+    id="transfer-asset"
+    aria-label="transfer your asset"
+    role="section"
+  >
+    <h1 class="title">{{ translate("transfer-asset.title") }}</h1>
+    <form @submit.prevent="(event) => form.handleSubmit((data) => onSubmit(event, data))">
+      <TextInput
+        :type="'text'"
+        :disabled="form.formState.isSubmitting"
+        :title="'To'"
+        :error="form.errors.to"
+        :controller="form.register('to')"
+      />
+      <button type="submit" :disabled="form.formState.isSubmitting">Submit</button>
+    </form>
+  </section>
 </template>
 
 <style scoped>
 .root {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .title {
-    text-align: center;
+  text-align: center;
 }
 </style>
