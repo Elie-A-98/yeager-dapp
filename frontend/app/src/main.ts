@@ -1,23 +1,25 @@
 import './assets/main.css'
 
 import { createApp } from 'vue'
-import { createWebHistory, createRouter } from 'vue-router'
+import { createWebHistory } from 'vue-router'
 import App from './App.vue'
 import protectedRoutes from './routes/protected'
 import sharedRoutes from './routes/shared'
 import publicRoutes from './routes/public'
 import { verifyConfig } from './config'
+import i18n from '@/i18n/plugin'
 
 verifyConfig()
 
 const app = createApp(App)
 
-const router = createRouter({
-  history: createWebHistory(),
-  routes: [...sharedRoutes, ...publicRoutes, ...protectedRoutes]
+// i18n create it's own router to handle languages
+app.use(i18n, {
+  router: {
+    history: createWebHistory(),
+    routes: [...sharedRoutes, ...publicRoutes, ...protectedRoutes]
+  }
 })
-
-app.use(router)
 
 app.config.errorHandler = (err) => {
   if (import.meta.env.DEV) {

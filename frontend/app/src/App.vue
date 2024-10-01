@@ -1,9 +1,9 @@
 <script setup lang="ts">
-import ThreeRowsLayout from './components/layouts/ThreeRowsLayout.vue';
-import NavHeader from './components/NavHeader.vue';
-import Ethereum from './ethereum/Ethereum.vue';
-import ThemeProvider from './theme/Theme.vue'
-import ToastProvider from './toast/ToastProvider.vue';
+import ThreeRowsLayout from "./components/layouts/ThreeRowsLayout.vue";
+import NavHeader from "./components/NavHeader.vue";
+import Ethereum from "./ethereum/Ethereum.vue";
+import ThemeProvider from "./theme/Theme.vue";
+import ToastProvider from "./toast/ToastProvider.vue";
 </script>
 
 <template>

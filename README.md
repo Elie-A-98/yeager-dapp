@@ -76,6 +76,8 @@ You should be able to mint new tokens after that
 
 The frontend is deployed to a subdomain [http://yeager.elie-atamech.com/connect-wallet](http://yeager.elie-atamech.com/connect-wallet)
 
+You can add `/en/` or `/fr` or `/it` ad the end of the url to set the language
+
 I used docker and aws ec2 to deploy both the frontend and backend.
 
 I faced issues with vercel because [it doesn't support yarn 4](https://vercel.com/guides/does-vercel-support-yarn-2). I was able to downgrade to yarn 1 and deploy both the backend and frontend on vercel but it was a messy process and i didn't like it
@@ -102,6 +104,7 @@ This is a brief list of the technical features implemented:
 - Vue js application focused on good structure (sepeartion by concern). Protected, shared and public routes, minimal use of libraries and manual implementation of Toasts and Theming with preferred color-scheme support.
 - Metamask integration through ethers.js
 - useForm composable with advanced type inferring, integrated with zod and custom controlled inputs for easy form creation, submission and validation 
+- Internalization (i used gemini to get a translated version of the english dictionary)
 
 ## 1. How to Run
 
@@ -396,3 +399,5 @@ This is a list of the technologies used with a brief description
 -  **Zod**: a js schema validation library
 
 - **Vue js**
+
+- **Gemini**: used to translate the english dictionary to french
