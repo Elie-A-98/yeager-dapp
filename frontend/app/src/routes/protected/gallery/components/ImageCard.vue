@@ -11,7 +11,7 @@ const props = defineProps<ImageCardProps>()
 </script>
 
 <template>
-    <RouterLink class="root" href="" :to="`tokens/${props.tokenId}`">
+    <RouterLink class="root" href="" :to="`/tokens/${props.tokenId}`">
         <img class="image" :src="imgSrc" width="100%" height="100%" />
         <p class="name">{{ props.name }}</p>
     </RouterLink>
@@ -41,6 +41,4 @@ const props = defineProps<ImageCardProps>()
     object-fit: cover;
     height: 80%;
 }
-
-.name {}
 </style>
