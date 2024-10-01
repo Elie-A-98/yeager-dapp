@@ -36,7 +36,8 @@ const BASE_LANG = {
   'mint-request.form.description': 'Description',
   'mint-request.form.asset': 'Asset',
   'mint-request.success': 'Token Minted!',
-  'transfer-asset.title': 'Transfer your asset'
+  'transfer-asset.title': 'Transfer your asset',
+  'page-not-found.title': 'Page Not Found'
 }
 
 export const dictionary = {
@@ -68,7 +69,8 @@ export const dictionary = {
     'mint-request.form.description': 'Description',
     'mint-request.form.asset': 'Actif',
     'mint-request.success': 'Jeton créé !',
-    'transfer-asset.title': 'Transférer votre actif'
+    'transfer-asset.title': 'Transférer votre actif',
+    'page-not-found.title': 'Page introuvable'
   },
   it: {
     'common.problem-occured': 'Si è verificato un problema',
@@ -97,7 +99,8 @@ export const dictionary = {
     'mint-request.form.description': 'Descrizione',
     'mint-request.form.asset': 'Asset',
     'mint-request.success': 'Token creato!',
-    'transfer-asset.title': 'Trasferisci il tuo asset'
+    'transfer-asset.title': 'Trasferisci il tuo asset',
+    'page-not-found.title': "Pagina non trovata"
   }
   // will ensure we have all the sentences implemented in all the languages that we support
 } as const satisfies Record<Languages, Record<keyof typeof BASE_LANG, string>>

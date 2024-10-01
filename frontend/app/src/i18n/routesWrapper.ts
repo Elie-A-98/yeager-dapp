@@ -5,7 +5,7 @@ export const i18nRoutes = (originalRoutes: readonly RouteRecordRaw[]): RouteReco
     record.children === undefined
       ? {
           ...record,
-          path: `${record.path}/:lang+`
+          path: `${record.path}/:lang`
         }
       : {
           ...record,

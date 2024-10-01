@@ -17,7 +17,7 @@ const app = createApp(App)
 app.use(i18n, {
   router: {
     history: createWebHistory(),
-    routes: [...sharedRoutes, ...publicRoutes, ...protectedRoutes]
+    routes: [...protectedRoutes, ...publicRoutes, ...sharedRoutes]
   }
 })
 

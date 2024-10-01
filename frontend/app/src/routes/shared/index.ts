@@ -1,8 +1,8 @@
 import type { RouterOptions } from 'vue-router'
-import ProblemOccured from './ProblemOccured.vue'
 import WhoCanMint from './who-can-mint/WhoCanMint.vue'
 import Shared from './Shared.vue'
 import Home from './Home.vue'
+import PageNotFound from './PageNotFound.vue'
 /**
  * Shared routes are routes that an authorized or unauthorized use can access
  */
@@ -21,8 +21,8 @@ export default [
         component: WhoCanMint
       },
       {
-        path: 'problem-occured',
-        component: ProblemOccured
+        path: '/:matchany*',
+        component: PageNotFound
       }
     ]
   }

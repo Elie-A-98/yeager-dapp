@@ -15,7 +15,9 @@ import ToastProvider from "./toast/ToastProvider.vue";
             <NavHeader />
           </template>
           <template v-slot:main>
-            <RouterView />
+            <div class="main">
+              <RouterView />
+            </div>
           </template>
         </ThreeRowsLayout>
       </Ethereum>
@@ -23,4 +25,8 @@ import ToastProvider from "./toast/ToastProvider.vue";
   </ThemeProvider>
 </template>
 
-<style scoped></style>
+<style scoped>
+  .main{
+    margin-top: var(--spacing-2);
+  }
+</style>
