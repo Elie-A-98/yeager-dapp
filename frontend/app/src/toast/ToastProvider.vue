@@ -85,7 +85,8 @@ aside {
     right: 0;
     background-color: transparent;
     pointer-events: none;
-    margin: var(--spacing-2);
+    margin: var(--spacing-1);
+    z-index: 10;
 }
 
 ul {

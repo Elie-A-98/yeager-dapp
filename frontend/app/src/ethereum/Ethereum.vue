@@ -14,10 +14,15 @@ const connectedContract = ref<ethers.BaseContract | undefined>()
 const availableProviders = ref<ProviderInfo[]>([])
 
 const activeAccount = ref<string | undefined>(undefined)
+const chainId = ref<number | undefined>(undefined)
+
 const connectToProvider = async () => {
+  debugger
+
   if (window.ethereum) {
     const provider = new ethers.BrowserProvider(window.ethereum)
     const contract = new ethers.Contract(import.meta.env.VITE_CONTRACT_ADDRESS, token.abi, provider)
+    chainId.value = ethers.toNumber((await provider.getNetwork()).chainId)
     const updateAccount = async (account: string) => {
       const signer = await provider.getSigner(account)
 
@@ -29,6 +34,8 @@ const connectToProvider = async () => {
     window.ethereum.on('accountsChanged', function (accounts: string[]) {
       updateAccount(accounts[0])
     })
+
+
     return provider.send("eth_requestAccounts", []).then(async (accounts: string[]) => {
       updateAccount(accounts[0])
     })
@@ -39,6 +46,9 @@ const connectToProvider = async () => {
 }
 
 onMounted(async () => {
+  window.ethereum.on('chainChanged', function (newChainId: string) {
+    chainId.value = ethers.toNumber(newChainId)
+  })
   window.addEventListener(
     'eip6963:announceProvider',
     async (event: EIP6963AnnounceProviderEvent) => {
@@ -59,13 +69,13 @@ provide(ethereumInjectionKey, {
   contract: connectedContract,
   connectToProvider,
   account: readonly(activeAccount),
-  metamaskDetected: readonly(metamaskDetected)
+  metamaskDetected: readonly(metamaskDetected),
+  chainId: readonly(chainId)
 })
 </script>
 
 <template>
-  <div :key="activeAccount">
+  <div :key="`${activeAccount}-${chainId}`">
     <slot></slot>
   </div>
-
 </template>

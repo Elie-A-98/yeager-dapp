@@ -1,6 +1,7 @@
 import type { RouterOptions } from 'vue-router'
 import ConnectWallet from './connect-wallet/ConnectWallet.vue'
 import Public from './Public.vue'
+import WrongNetwork from './wrong-network/WrongNetwork.vue'
 
 /**
  * Public routes are accessible only bu unauthorized users
@@ -15,6 +16,10 @@ export default [
       {
         path: 'connect-wallet',
         component: ConnectWallet
+      },
+      {
+        path: 'wrong-network',
+        component: WrongNetwork
       }
     ]
   }

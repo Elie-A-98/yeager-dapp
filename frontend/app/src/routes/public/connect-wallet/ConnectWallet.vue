@@ -1,14 +1,18 @@
 <script setup lang="ts">
 import { translate } from '@/i18n';
-import { useEthereum } from '@/ethereum'
+import { isAccountConnected, useEthereum } from '@/ethereum'
 import { metamaskProviderInfo } from '@/ethereum/definitions';
-import { computed } from '@vue/reactivity';
 import { useRouter } from 'vue-router';
 import { useToast } from '@/toast';
 const router = useRouter();
 const toast = useToast();
 const ethereum = useEthereum();
-// const metaMastStatus = ref<'pending' | 'invalid' | 'valid'>('valid')
+
+if (isAccountConnected(ethereum.account)) {
+    const redirect = router.currentRoute.value.query.redirect || ''
+    router.replace(`/${redirect}`)
+}
+
 const connect = () => ethereum.connectToProvider().catch(err =>
     toast.add({
         type: 'error',
