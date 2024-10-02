@@ -26,6 +26,7 @@ export class MintRequest extends ValueObject {
   }
 
   // here we enforce rules
+  // TODO: depend on ICounter instead of INetworkRepository
   public static async CreateNew(to: AddressId, metaData: Metadata, networkRepository: INetworkRepository) {
     await this.validateRule(new UserHavePermissionToMintRule(networkRepository, to));
     const newRequest = new MintRequest(to, metaData);
