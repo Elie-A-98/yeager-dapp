@@ -157,11 +157,11 @@ The frontend application needs the env variables below:
 
 ### 1.3 Run the application using docker
 
-Docker images are the easier and faster way to run the application. I have uploaded the images to a private docker hub repository but i can't grant access to specific emails, I instead have to make the repository public.
+Docker images are the easier and faster way to run the application.
 
-So you have to build the docker images yourself and run them.
+In the future docker compose should be used to automate the process but for now i am running 2 containers manually
 
-Please make sure you have docker installed.
+Please follow these steps to build and run the containers.
 
 1. Go to `backend/api/Dockerfile` and update the env variables with your values (on line 45) 
 
