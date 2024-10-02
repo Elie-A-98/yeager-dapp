@@ -166,16 +166,17 @@ So you have to build the docker images yourself and run them.
 
 Please make sure you have docker installed.
 
-1. In the root directory in the terminal run `docker build -t yeager-backend -f backend/api/Dockerfile .`
+1. Go to `backend/api/Dockerfile` and update the env variables with your values (on line 45) 
 
-Then run the backend with this command `docker run -d -t yeager-backend` and pass it the backend env variables from above and map the ports
+In the root directory in the terminal run `docker build -t yeager-backend -f backend/api/Dockerfile .`
 
-Ex: `docker run --env=NODE_ENV=Development --env=PINATA_JWT=YOUR_PINATA_JWT --env=PINATA_GATEWAY_URL=YOUR_PINATA_GATEWAY_URL --env=NETWORK=Sepolia --env=WALLET_PRIVATE_KEY=YOUR_WALLET_PRIVATE_KEY --env=CONTRACT_ADDRESS=THE_CONTRACT_ADDRESS --env=INFURA_API_KEY=YOUR_INFURAT_PRIVATE_KEY --env=WEB_APP_URL=http://localhost:3000 -p 8080:80 -d yeager-backend:latest`
+Then run the backend with this command `docker run -d -t yeager-backend` and map the ports
+
+Ex: `docker run -d -p 8080:80 -t yeager-backend`
 
 2. In the root directory in the terminal run `docker build -t yeager-frontend -f frontend/app/Dockerfile .`
 
-
-Then run the frontend with this command `docker run -d -t yeager-frontend` and pass it the backend env variables from above and map the ports
+Then run the frontend with this command `docker run -d -t yeager-frontend` and **pass it the backend env variables** from above and map the ports
 
 **Notice here the env variables start with `MY_`**
 
@@ -205,6 +206,7 @@ WEB_APP_URL=http://localhost:5173
 
 Ex:
 ```
+VITE_NODE_ENV=Development
 VITE_NETWORK=Sepolia
 VITE_APP_NAME=Yeager DApp
 VITE_HOST_URL=http://localhost:80
