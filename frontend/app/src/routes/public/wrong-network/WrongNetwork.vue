@@ -6,7 +6,6 @@ import { useRouter } from 'vue-router';
 const router = useRouter();
 const ethereum = useEthereum()
 
-debugger
 if (isOnCorrectNetwork(ethereum.chainId)) {
     const redirect = router.currentRoute.value.query.redirect || ''
     router.replace(`/${redirect}`)

@@ -17,8 +17,6 @@ const activeAccount = ref<string | undefined>(undefined)
 const chainId = ref<number | undefined>(undefined)
 
 const connectToProvider = async () => {
-  debugger
-
   if (window.ethereum) {
     const provider = new ethers.BrowserProvider(window.ethereum)
     const contract = new ethers.Contract(import.meta.env.VITE_CONTRACT_ADDRESS, token.abi, provider)
