@@ -40,13 +40,12 @@ That being said I gave this project priority and I invested time to ensure that 
 
 # Live Application
 
-When you mint a token, the contract owner is doing it for you (explained later in the DApp overview section, but for short i did this to avoid adding complexity to the token solidity contract which was out of scope for this project). 
+When you mint a token, the contract owner is doing it for you (explained later in the DApp overview section, but for short it's to avoid adding complexity to the token creation).
 
-So if you face a `Problem occured` it is because the owner doesn't have enough sepolia ETH to mint new tokens. You can solve this problem by sending him sepolia ETH for free:
+So if you face a `Problem occured` it is because the owner doesn't have enough sepolia ETH to mint new tokens. In that case please send the owner `0x47bd5885386087A5Efc6e2A0eA16074BBBa4002e` sepolia eth for the minting feature to work.
 
-Go [here](https://faucets.chain.link/sepolia), choose Ethereum Sepolia ETH and send to this address `0x47bd5885386087A5Efc6e2A0eA16074BBBa4002e`
 
-You should be able to mint new tokens after that
+***I used [chain link](https://faucets.chain.link/sepolia) and [google faucet](https://cloud.google.com/application/web3/faucet/ethereum/sepolia) to get free sepolia ETH***
 
 ---
 
@@ -54,7 +53,7 @@ The frontend is deployed to a subdomain [http://yeager.elie-atamech.com/connect-
 
 You can add `/en/` or `/fr` or `/it` ad the end of the url to set the language
 
-I used docker and aws ec2 to deploy both the frontend and backend.
+I am running a docker image on aws ec2 to serve both the frontend and backend.
 
 I faced issues with vercel because [it doesn't support yarn 4](https://vercel.com/guides/does-vercel-support-yarn-2). I was able to downgrade to yarn 1 and deploy both the backend and frontend on vercel but it was a messy process and i didn't like it
 
@@ -131,10 +130,6 @@ If you want to use the contract I already deployed on sepolia then you only need
 If you want you can create a new erc 721 on sepolia with the contract in `packages/nft/contracts/token.sol` and save its address
 
 The saved contract address will be later used as env variable for the application
-
-Through metamask onnect to the sepolia testnet
-
-***I used [chain link](https://faucets.chain.link/sepolia) link to get free sepolia ETH***
 
 ### 1.2 Env variables
 
