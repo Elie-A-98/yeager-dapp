@@ -38,7 +38,7 @@ const props = defineProps<{
     text-align: center
   }
   .not-yours{
-    margin-top: var(--spacing-2);
+    padding: var(--spacing-2) 0;
     text-align: center;
   }
 </style>

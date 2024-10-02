@@ -52,8 +52,10 @@ onMounted(async () => {
 }
 
 .image {
-    object-fit: none;
+    object-fit: contain;
     margin-top: var(--spacing-2);
     max-width: 100vh;
+    border: 2px solid var(--color-accent);
+    box-shadow: 0 5px 10px var(--color-accent);
 }
 </style>
