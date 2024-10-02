@@ -5,13 +5,9 @@ import ThemeSwitcher from "@/theme/components/ThemeSwitcher.vue";
 
 <template>
   <div class="root">
-    <img
-      alt="Eliuem logo"
-      class="logo"
-      src="../assets/Testium-logo.webp"
-      width="125"
-      height="25"
-    />
+    <RouterLink to="/">
+      <img alt="Eliuem logo" class="logo" src="../assets/Testium-logo.webp" width="125" height="25" />
+    </RouterLink>
     <input type="checkbox" id="menu-toggle" />
     <label for="menu-toggle" class="menu-icon">&#9776;</label>
     <nav class="nav">
@@ -64,11 +60,12 @@ nav {
 #menu-toggle {
   display: none;
 }
+
 #menu-icon {
   display: none;
 }
 
-#menu-toggle:checked ~ nav {
+#menu-toggle:checked~nav {
   transform: scale(1, 1);
 }
 
@@ -97,10 +94,12 @@ nav {
     background-color: var(--color-background);
     row-gap: var(--spacing-05);
   }
-  nav > a {
+
+  nav>a {
     text-align: center;
-    
+
   }
+
   .menu-icon {
     display: block;
     color: var(--color-text);
