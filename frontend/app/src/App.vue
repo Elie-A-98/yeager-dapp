@@ -9,24 +9,25 @@ import ToastProvider from "./toast/ToastProvider.vue";
 <template>
   <ThemeProvider>
     <ToastProvider>
-      <Ethereum>
-        <ThreeRowsLayout>
-          <template v-slot:header>
-            <NavHeader />
-          </template>
-          <template v-slot:main>
-            <div class="main">
+
+      <ThreeRowsLayout>
+        <template v-slot:header>
+          <NavHeader />
+        </template>
+        <template v-slot:main>
+          <div class="main">
+            <Ethereum>
               <RouterView />
-            </div>
-          </template>
-        </ThreeRowsLayout>
-      </Ethereum>
+            </Ethereum>
+          </div>
+        </template>
+      </ThreeRowsLayout>
     </ToastProvider>
   </ThemeProvider>
 </template>
 
 <style scoped>
-  .main{
-    margin-top: var(--spacing-2);
-  }
+.main {
+  margin-top: var(--spacing-2);
+}
 </style>
