@@ -32,7 +32,7 @@
 
 # Announcement
 
-This project took me about 1.2 weeks in total. I was working on another project in parallel which forced me to shift my focus away at some times
+This project took me about 1+ week in total. I was working on another project in parallel which forced me to shift my focus away at some times
 
 That being said I gave this project priority and I invested time to ensure that my skills were represented before sumitting
 
@@ -81,22 +81,22 @@ This is a brief list of the technical features implemented:
 - Vue js application focused on good structure (sepeartion by concern). Protected, shared and public routes, minimal use of libraries and manual implementation of Toasts and Theming with preferred color-scheme support.
 - Metamask integration through ethers.js
 - useForm composable with advanced type inferring, integrated with zod and custom controlled inputs for easy form creation, submission and validation 
-- Internalization (i used gemini to get a translated version of the english dictionary)
+- Internalization and support of english, italian and french
 
 ## 1. How to Run
 
 **You can run all the application locally using docker images or manually in the terminal.**
 
-1. Run `nvm use` to be on the correct version of yarn
+*I used yarn version `4.5.0` and `turbo`<br>
+The development was done on wsl 2 (ubuntu)*
+
+1. Make sure to use yarn 4. If possible run `nvm use` to switch to the correct version
+
 2. Run `yarn install` from the root dir
 
 3. Create a free account on Pinata to get the API keys
 
 4. Install metamask extension
-
-*I used yarn version `4.5.0` and `turbo`<br>
-The development was done on wsl 2 (ubuntu)*
-
 
 ### 1.1 Decide which network to use
 
@@ -366,4 +366,4 @@ This is a list of the technologies used with a brief description
 
 - **Vue js**
 
-- **Gemini**: used to translate the english dictionary to french
+- **Gemini**: used to translate the english dictionary to french and italian
