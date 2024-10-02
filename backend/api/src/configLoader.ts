@@ -19,6 +19,8 @@ export const envConfigSchema = z.object({
     })
   });
 
+
+//TODO: get secrets using a secure secrets manager
 export const loadConfig = () => {
     const envConfig = envConfigSchema.parse(process.env)
     return {

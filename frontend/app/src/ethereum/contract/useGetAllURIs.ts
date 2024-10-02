@@ -11,6 +11,7 @@ const getAssetSchema = z.object({
 
 export type GetAssetRequest = z.infer<typeof getAssetSchema>
 
+//TODO: Accept an Abort controller
 export const useGetAllURIsAndTokenIds = (request: GetAssetRequest) => {
   getAssetSchema.parse(request)
   const contract = useContract()
