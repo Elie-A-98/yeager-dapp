@@ -36,6 +36,7 @@ const onSubmit = async (event: Event, data: FormData) => {
     const formData = new FormData(form);
     const file = formData.get('asset') as File
 
+    //TODO: pass an abort controller
     await mintRequest({
         name: data.name,
         address: data.address,

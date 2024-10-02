@@ -19,6 +19,7 @@ const urisGetter = useGetAllURIsAndTokenIds({
 const allMetadata = ref<(Asset)[]>([])
 
 try {
+    //TODO: pass an abort controller
     const urisAndTokenIds = await urisGetter.call()
     const promises: Promise<Asset>[] = []
     urisAndTokenIds.forEach(({ uri, tokenId }) => {

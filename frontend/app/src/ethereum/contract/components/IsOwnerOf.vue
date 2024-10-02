@@ -4,7 +4,6 @@ import { useConnectedAccount, useContract } from '@/ethereum';
 const props = defineProps < {
     tokenId: number
 } > ()
-debugger
 const contract = useContract()
 const account = useConnectedAccount()
 
