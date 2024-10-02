@@ -33,7 +33,7 @@ watch(checked, () => {
     outline: none;
     border: none;
     cursor: pointer;
-    background: var(--color-background);
+    background: var(--color-accent);
     transition: background-color ease 0.3s;
 }
 
