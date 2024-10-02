@@ -32,13 +32,15 @@
 
 # Announcement
 
-This project took me about 1 week in total. I took some time to research and I was working on another project in parallel which forced me to shift my focus away at some times
+This project took me about 1.2 weeks in total. I was working on another project in parallel which forced me to shift my focus away at some times
 
 That being said I gave this project priority and I invested time to ensure that my skills were represented before sumitting
 
 **Please note that I am aware that this project is over engineered and If it was a real project I would have done things much simpler and faster.**
 
 # Live Application
+
+**Please note that I will secure the website with an SSL certificate, but to save time I submitted it working on hhtp for now. I will use certbot and integrate it with my already configured nginx server**
 
 When you mint a token, the contract owner is doing it for you (explained later in the DApp overview section, but for short it's to avoid adding complexity to the token creation).
 
