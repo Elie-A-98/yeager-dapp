@@ -29,7 +29,8 @@ COPY --from=builder /app/tsconfig.json .
 COPY --from=builder /app/yarn.config.cjs .
 
 RUN echo "VITE_NETWORK=MY_VITE_NETWORK" >> /app/frontend/app/.env \
-    && echo "VITE_APP_NAME=MY_VITE_APP_NAME DApp" >> /app/frontend/app/.env \
+    && echo "VITE_NODE_ENV=MY_VITE_NODE_ENV" >> /app/frontend/app/.env \
+    && echo "VITE_APP_NAME=MY_VITE_APP_NAME" >> /app/frontend/app/.env \
     && echo "VITE_HOST_URL=MY_VITE_HOST_URL" >> /app/frontend/app/.env \
     && echo "VITE_CONTRACT_ADDRESS=MY_VITE_CONTRACT_ADDRESS" >> /app/frontend/app/.env \
     && echo "VITE_PINATA_GATEWAY_URL=MY_VITE_PINATA_GATEWAY_URL" >> /app/frontend/app/.env

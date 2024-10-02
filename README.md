@@ -179,7 +179,7 @@ Then run the frontend with this command `docker run -d -t yeager-frontend` and p
 
 **Notice here the env variables start with `MY_`**
 
-Ex: `docker run --env=MY_VITE_NETWORK=Sepolia --env=MY_VITE_APP_NAME="Yeager DApp" --env=MY_VITE_HOST_URL=http://localhost:8080 --env=MY_VITE_CONTRACT_ADDRESS=0x47bd5885386087A5Efc6e2A0eA16074BBBa4002e --env=MY_VITE_PINATA_GATEWAY_URL=YOUR_PINATA_GATEWAY_URL -p 3000:80 -d yeager-frontend:latest`
+Ex: `docker run --env=MY_VITE_NODE_ENV=Development --env=MY_VITE_NETWORK=Sepolia --env=MY_VITE_APP_NAME="Yeager DApp" --env=MY_VITE_HOST_URL=http://localhost:8080 --env=MY_VITE_CONTRACT_ADDRESS=0x47bd5885386087A5Efc6e2A0eA16074BBBa4002e --env=MY_VITE_PINATA_GATEWAY_URL=YOUR_PINATA_GATEWAY_URL -p 3000:80 -d yeager-frontend:latest`
 
 **By now the application is running, you can skip to the next section.**
 
