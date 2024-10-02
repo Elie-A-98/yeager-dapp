@@ -78,7 +78,7 @@ This is a brief list of the technical features implemented:
 - Logging with `winston`
 - Zod for validation
 - Multer for file uploads
-- Vue js application focused on good structure (sepeartion by concern). Protected, shared and public routes, minimal use of libraries and manual implementation of Toasts and Theming with preferred color-scheme support.
+- Vue js application focused on good structure (sepeartion by concern). Protected, shared and public routes, minimal use of libraries and manual implementation of Toasts,Theming and i18n.
 - Metamask integration through ethers.js
 - useForm composable with advanced type inferring, integrated with zod and custom controlled inputs for easy form creation, submission and validation 
 - Internalization and support of english, italian and french
