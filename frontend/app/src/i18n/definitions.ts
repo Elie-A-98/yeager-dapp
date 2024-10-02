@@ -39,7 +39,8 @@ const BASE_LANG = {
   'mint-request.success': 'Token Minted!',
   'transfer-asset.title': 'Transfer your asset',
   'page-not-found.title': 'Page Not Found',
-  'wrong-network.prompt': `Please connect to the right network. The chain id should be ${CHAIN_ID}`
+  'wrong-network.prompt': `Please connect to the right network. The chain id should be ${CHAIN_ID}`,
+  'token-details.noot-yours': `This asset is not yours so you can't transfer it`
 }
 
 export const dictionary = {
@@ -74,7 +75,9 @@ export const dictionary = {
     'transfer-asset.title': 'Transférer votre actif',
     'page-not-found.title': 'Page introuvable',
 
-    'wrong-network.prompt': `Veuillez vous connecter au bon réseau. L'identifiant de chaîne doit être${CHAIN_ID}`
+    'wrong-network.prompt': `Veuillez vous connecter au bon réseau. L'identifiant de chaîne doit être${CHAIN_ID}`,
+  'token-details.noot-yours': `This asset is not yours so you can't transfer it`
+
   },
   it: {
     'common.problem-occured': 'Si è verificato un problema',
@@ -105,7 +108,9 @@ export const dictionary = {
     'mint-request.success': 'Token creato!',
     'transfer-asset.title': 'Trasferisci il tuo asset',
     'page-not-found.title': 'Pagina non trovata',
-    'wrong-network.prompt': `Si prega di connettersi alla rete giusta. L'ID della catena deve essere ${CHAIN_ID}`
+    'wrong-network.prompt': `Si prega di connettersi alla rete giusta. L'ID della catena deve essere ${CHAIN_ID}`,
+  'token-details.noot-yours': `This asset is not yours so you can't transfer it`
+
   }
   // will ensure we have all the sentences implemented in all the languages that we support
 } as const satisfies Record<Languages, Record<keyof typeof BASE_LANG, string>>
