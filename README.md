@@ -74,7 +74,7 @@ This is a brief list of the technical features implemented:
 - Clean architecture and cqrs on the backend. Standalone and unit tested Domain layer (`packages/domain`) that doesn't have external dependencies. Application layer (`backend/application`) that implement use cases, and infrastructure/presentation (`backend/api`) layer
 - Restricting packages from wrongly depending on other packages (like the domain package depending on the application package) using yarn config `yarn.config.cjs`
 - Express app with Api versioning support and error handling
-- Just the needed Inversion of control with a DI library
+- Just the needed Inversion of control without a DI library
 - Logging with `winston`
 - Zod for validation
 - Multer for file uploads
