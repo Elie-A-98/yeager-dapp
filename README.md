@@ -2,69 +2,45 @@
 
 # Table of Contents
 
-[Announcement](#announcement)
-
-[Live Application](#live-application)
-
-[Technical Summary](#technical-summary)
-
-[1. How to Run](#1-how-to-run)
-
-&nbsp;&nbsp;[1.1 Decide which network to use](#11-decide-which-network-to-use)
-
-&nbsp;&nbsp;[1.2 Env variables](#12-env-variables)
-
-&nbsp;&nbsp;[1.3 Run the application using docker](#13-run-the-application-using-docker)
-
-&nbsp;&nbsp;[1.4 Run the application manually in the terminal](#14-run-the-application-manually-in-the-terminal)
-
-[2. Contract and Solidity](#2-contract-and-solidity)
-
-[3. Requirements](#3-requirements)
-
-[4. Assumptions and Approach](#4-development-assumptions-and-approach)
-
-&nbsp;&nbsp;[4.1 Assumptions](#41-assumptions)
-
-&nbsp;&nbsp;[4.2 Approach](#42-approach)
-
-[5. DApp Overview](#5-dapp-overview)
-
-&nbsp;&nbsp;[5.1 Who can mint (assumption)](#51-who-can-mint-(assumption))
-
-&nbsp;&nbsp;[5.2 Overview](#52-overview)
-
-[6. Architecture](#6-architecture)
-
-&nbsp;&nbsp;[6.1 Monorepo](#61-monorepo)
-
-&nbsp;&nbsp;[6.2 C4 Model](#62-c4-model)
-
-&nbsp;&nbsp;&nbsp;&nbsp;[6.2.1 C1 System Context](#621-c1-system-context)
-
-&nbsp;&nbsp;&nbsp;&nbsp;[6.2.2 C2 Container](#622-c2-container)
-
-&nbsp;&nbsp;&nbsp;&nbsp;[6.2.3 Back-End](#623-back-end)
-
-&nbsp;&nbsp;&nbsp;&nbsp;[6.2.4 Front-End](#624-front-end)
-
-[7. Planning](#7-planning)
-
-[8. Git Messages](#8-git-messages)
-
+[Announcement](#announcement)<br><br>
+[Live Application](#live-application)<br><br>
+[Technical Summary](#technical-summary)<br><br>
+[1. How to Run](#1-how-to-run)<br>
+&nbsp;&nbsp;[1.1 Decide which network to use](#11-decide-which-network-to-use)<br>
+&nbsp;&nbsp;[1.2 Env variables](#12-env-variables)<br>
+&nbsp;&nbsp;[1.3 Run the application using docker](#13-run-the-application-using-docker)<br>
+&nbsp;&nbsp;[1.4 Run the application manually in the terminal](#14-run-the-application-manually-in-the-terminal)<br><br>
+[2. Contract and Solidity](#2-contract-and-solidity)<br><br>
+[3. Requirements](#3-requirements)<br><br>
+[4. Assumptions and Approach](#4-development-assumptions-and-approach)<br>
+&nbsp;&nbsp;[4.1 Assumptions](#41-assumptions)<br>
+&nbsp;&nbsp;[4.2 Approach](#42-approach)<br><br>
+[5. DApp Overview](#5-dapp-overview)<br>
+&nbsp;&nbsp;[5.1 Who can mint (assumption)](#51-who-can-mint-(assumption))<br>
+&nbsp;&nbsp;[5.2 Overview](#52-overview)<br><br>
+[6. Architecture](#6-architecture)<br>
+&nbsp;&nbsp;[6.1 Monorepo](#61-monorepo)<br>
+&nbsp;&nbsp;[6.2 C4 Model](#62-c4-model)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;[6.2.1 C1 System Context](#621-c1-system-context)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;[6.2.2 C2 Container](#622-c2-container)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;[6.2.3 Back-End](#623-back-end)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;[6.2.4 Front-End](#624-front-end)<br><br>
+[7. Planning](#7-planning)<br><br>
+[8. Git Messages](#8-git-messages)<br><br>
 [9. TEchnologies Used](#9-technologies-used)
-
 
 
 # Announcement
 
-Please note that this project took me 1 week in total. I took some time to research and I was working on another project in parallel which forced me to shift my focus away at some times
+This project took me about 1 week in total. I took some time to research and I was working on another project in parallel which forced me to shift my focus away at some times
 
-**That being said I gave this project priority and attention. I invested time to ensure that my skills were fully represented before sumitting and that I am happy with the result**
+That being said I gave this project priority and I invested time to ensure that my skills were represented before sumitting
+
+**Please note that I am aware that this project is over engineered and If it was a real project I would have done things much simpler and faster.**
 
 # Live Application
 
-Please note that when you mint a token, the contract owner is doing it for you (explained later in the DApp overview section, but for short i did this to avoid adding complexity to the token solidity contract which was out of scope for this project). 
+When you mint a token, the contract owner is doing it for you (explained later in the DApp overview section, but for short i did this to avoid adding complexity to the token solidity contract which was out of scope for this project). 
 
 So if you face a `Problem occured` it is because the owner doesn't have enough sepolia ETH to mint new tokens. You can solve this problem by sending him sepolia ETH for free:
 
@@ -108,20 +84,22 @@ This is a brief list of the technical features implemented:
 
 ## 1. How to Run
 
-Please make sure you have `yarn` installed. 
-- I used yarn version `4.5.0` and `turbo`
-- The development was done on wsl 2 (ubuntu)
+**You can run all the application locally using docker images or manually in the terminal.**
 
-Install metamask extension
+1. Run `nvm use` to be on the correct version of yarn
+2. Run `yarn install` from the root dir
 
-**Please make a free account on Pinata to get the API keys**
+3. Create a free account on Pinata to get the API keys
 
-- You can use a local hardhat blockchain network or sepolia testnet.
-- You can run all the application locally using docker images or manually in the terminal.
+4. Install metamask extension
 
-**First run `nvm use` and `yarn install` from the root dir**
+*I used yarn version `4.5.0` and `turbo`<br>
+The development was done on wsl 2 (ubuntu)*
+
 
 ### 1.1 Decide which network to use
+
+You can use a local hardhat blockchain network or sepolia testnet.
 
 **To run on hardhat:**
 
@@ -267,7 +245,7 @@ This is the original [Fullstack_js_-_Web3_Integration](./docs/planning/documents
 
 ### 4.1 Assumptions
 
-**Please note that I am aware that this project is over engineered and If it was a real project I would have done things much simpler and faster.**
+**I am aware that this project is over engineered and If it was a real project I would have done things much simpler and faster.**
 
 But I assumed that I have the flexibility to showcase my skills and demonstrate my ability to build from the ground up.
 
