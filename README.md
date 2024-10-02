@@ -51,7 +51,7 @@ So if you face a `Problem occured` it is because the owner doesn't have enough s
 
 ---
 
-The frontend is deployed to a subdomain [http://yeager.elie-atamech.com/connect-wallet](http://yeager.elie-atamech.com/connect-wallet)
+The frontend is deployed to a subdomain [http://yeager.elie-atamech.com](http://yeager.elie-atamech.com)
 
 You can add `/en/` or `/fr` or `/it` ad the end of the url to set the language
 
