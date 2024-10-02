@@ -172,19 +172,8 @@ Then run the backend with this command `docker run -d -t yeager-backend` and pas
 
 Ex: `docker run --env=NODE_ENV=Development --env=PINATA_JWT=YOUR_PINATA_JWT --env=PINATA_GATEWAY_URL=YOUR_PINATA_GATEWAY_URL --env=NETWORK=Sepolia --env=WALLET_PRIVATE_KEY=YOUR_WALLET_PRIVATE_KEY --env=CONTRACT_ADDRESS=THE_CONTRACT_ADDRESS --env=INFURA_API_KEY=YOUR_INFURAT_PRIVATE_KEY --env=WEB_APP_URL=http://localhost:3000 -p 8080:80 -d yeager-backend:latest`
 
-2. Create a `.env` file under `frontend/app/` with the exact following content:
+2. In the root directory in the terminal run `docker build -t yeager-frontend -f frontend/app/Dockerfile .`
 
-```
-VITE_NETWORK=MY_VITE_NETWORK
-VITE_APP_NAME=MY_VITE_APP_NAME DApp
-VITE_HOST_URL=MY_VITE_HOST_URL
-VITE_CONTRACT_ADDRESS=MY_VITE_CONTRACT_ADDRESS
-VITE_PINATA_GATEWAY_URL=MY_VITE_PINATA_GATEWAY_URL
-```
-
-(This is to allow dynamic env variables when running the docker instead of passing them at build time)
-
-In the root directory in the terminal run `docker build -t yeager-frontend -f frontend/app/Dockerfile .`
 
 Then run the frontend with this command `docker run -d -t yeager-frontend` and pass it the backend env variables from above and map the ports
 
