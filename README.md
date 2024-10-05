@@ -32,7 +32,7 @@
 
 # Announcement
 
-This project took me about 1.2 weeks in total. I was working on another project in parallel which forced me to shift my focus away at some times
+This project took me about 1+ week in total. I was working on another project in parallel which forced me to shift my focus away at some times
 
 That being said I gave this project priority and I invested time to ensure that my skills were represented before sumitting
 
@@ -40,7 +40,7 @@ That being said I gave this project priority and I invested time to ensure that 
 
 # Live Application
 
-**Please note that I will secure the website with an SSL certificate, but to save time I submitted it working on hhtp for now. I will use certbot and integrate it with my already configured nginx server**
+**Please note that I will secure the website with an SSL certificate, but to save time I submitted it working on http for now. I will use certbot and integrate it with my already configured nginx server**
 
 When you mint a token, the contract owner is doing it for you (explained later in the DApp overview section, but for short it's to avoid adding complexity to the token creation).
 
@@ -51,7 +51,7 @@ So if you face a `Problem occured` it is because the owner doesn't have enough s
 
 ---
 
-The frontend is deployed to a subdomain [http://yeager.elie-atamech.com/connect-wallet](http://yeager.elie-atamech.com/connect-wallet)
+The frontend is deployed to a subdomain [http://yeager.elie-atamech.com](http://yeager.elie-atamech.com)
 
 You can add `/en/` or `/fr` or `/it` ad the end of the url to set the language
 
@@ -74,29 +74,29 @@ This is a brief list of the technical features implemented:
 - Clean architecture and cqrs on the backend. Standalone and unit tested Domain layer (`packages/domain`) that doesn't have external dependencies. Application layer (`backend/application`) that implement use cases, and infrastructure/presentation (`backend/api`) layer
 - Restricting packages from wrongly depending on other packages (like the domain package depending on the application package) using yarn config `yarn.config.cjs`
 - Express app with Api versioning support and error handling
-- Custom depedency injection without using libraries like `awilix`
+- Just the needed Inversion of control without a DI library
 - Logging with `winston`
 - Zod for validation
 - Multer for file uploads
-- Vue js application focused on good structure (sepeartion by concern). Protected, shared and public routes, minimal use of libraries and manual implementation of Toasts and Theming with preferred color-scheme support.
+- Vue js application focused on good structure (sepeartion by concern). Protected, shared and public routes, minimal use of libraries and manual implementation of Toasts,Theming and i18n.
 - Metamask integration through ethers.js
 - useForm composable with advanced type inferring, integrated with zod and custom controlled inputs for easy form creation, submission and validation 
-- Internalization (i used gemini to get a translated version of the english dictionary)
+- Internalization and support of english, italian and french
 
 ## 1. How to Run
 
 **You can run all the application locally using docker images or manually in the terminal.**
 
-1. Run `nvm use` to be on the correct version of yarn
+*I used yarn version `4.5.0` and `turbo`<br>
+The development was done on wsl 2 (ubuntu)*
+
+1. Make sure to use yarn 4. If possible run `nvm use` to switch to the correct version
+
 2. Run `yarn install` from the root dir
 
 3. Create a free account on Pinata to get the API keys
 
 4. Install metamask extension
-
-*I used yarn version `4.5.0` and `turbo`<br>
-The development was done on wsl 2 (ubuntu)*
-
 
 ### 1.1 Decide which network to use
 
@@ -114,6 +114,8 @@ Save the first private key and address
 Also save the network url as it will be used later by metamask
 
 2. Deploy the contract by connecting (Remix ethereum)[https://remix.ethereum.org/] to the hardhat host (by default it's `http://0.0.0.0:8545`)
+
+*Use the compiler version 0.8.20 to compile and deploy the contract*
 
 Get the deployed contract address and save it for later
 
@@ -168,11 +170,11 @@ The frontend application needs the env variables below:
 
 ### 1.3 Run the application using docker
 
-Docker images are the easier and faster way to run the application. I have uploaded the images to a private docker hub repository but i can't grant access to specific emails, I instead have to make the repository public.
+Docker images are the easier and faster way to run the application.
 
-So you have to build the docker images yourself and run them.
+In the future docker compose should be used to automate the process but for now i am running the containers manually
 
-Please make sure you have docker installed.
+Please follow these steps to build and run the containers.
 
 1. Go to `backend/api/Dockerfile` and update the env variables with your values (on line 45) 
 
@@ -377,4 +379,4 @@ This is a list of the technologies used with a brief description
 
 - **Vue js**
 
-- **Gemini**: used to translate the english dictionary to french
+- **Gemini**: used to translate the english dictionary to french and italian

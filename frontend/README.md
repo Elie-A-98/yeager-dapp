@@ -66,14 +66,14 @@ This is different from having for ex: `utils/form-validation.ts` `utils/date-val
 
 The above can be grouped in 3 levels:
 
-- concern-specific: lives in `/concern`
-- shared: lives in `src/components`
-- page-specific: lives in `src/routes`
+- concern-specific: lives in `/concern` should not reference the lower levels
+- shared: lives in `src/components` and can reference the above level
+- page-specific: lives in `src/routes` and can reference the above levels
 
 
-**Concern specific** are usually providers or stores that creates a context. They do not contain data related stuff. For ex: `/theme` it contains the `Theme.vue` that provides the theme, `/components/ThemeSwitcher.vue` and utils that all should be in the context (aware of) the theme. Concern specific modules preferably should not reference each other. If 2 needs to reference each other it's better to make them 1 module. `ethereum` is another example
+**Concern specific** are usually providers or stores that creates a context. For ex: `/theme` it contains the `Theme.vue` that provides the theme, `/components/ThemeSwitcher.vue` and utils that all should be in the context (aware of) the theme. `ethereum` is another example
 
-**Shared** are components that are hoisted from page-specific. They are shared between pages and can contain data fetching and business text. This layer contains complex shared components so a reference mess is tolerated.
+**Shared** are components that are hoisted from page-specific. They are shared between pages and can contain data fetching and business text. This layer contains complex shared components.
 Ex: `Card.vue`, `Button.vue`, etc.
 
 **Page specific** are components specific to a particular page. If one component becomes shared between 2 or more pages it is hoisted to shared-components
