@@ -66,7 +66,7 @@ This is different from having for ex: `utils/form-validation.ts` `utils/date-val
 
 The above can be grouped in 3 levels:
 
-- concern-specific: lives in `/concern` should not reference the lower levels
+- concern-specific: lives in `/src` should not reference the lower levels
 - shared: lives in `src/components` and can reference the above level
 - page-specific: lives in `src/routes` and can reference the above levels
 
