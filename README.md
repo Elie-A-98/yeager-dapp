@@ -113,7 +113,7 @@ Run the image: `docker run -d -p 8545:8545 -t yeager-hardhat`
 Save the first private key and address
 Also save the network url as it will be used later by metamask
 
-2. Deploy the contract by connecting (Remix ethereum)[https://remix.ethereum.org/] to the hardhat host (by default it's `http://0.0.0.0:8545`)
+2. Deploy the contract. You can use (Remix ethereum)[https://remix.ethereum.org/] to connect your local file system by going to `packages/nft` and running `remixd`, then from (Remix ethereum)[https://remix.ethereum.org/] connecting to localhost
 
 *Use the compiler version 0.8.20 to compile and deploy the contract*
 
