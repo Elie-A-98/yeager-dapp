@@ -336,7 +336,7 @@ I will only draw the C1 and C2 level. This is actually a recommendation from the
 
 ### 6.2.4 Front-End
 
-[Front-End Architecture](./frontend/app/README.md)
+[Front-End Architecture](./frontend/README.md)
 
 
 ## 7 Planning
