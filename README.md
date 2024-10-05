@@ -104,12 +104,21 @@ You can use a local hardhat blockchain network or sepolia testnet.
 
 **To run on hardhat:**
 
-1. Run `yarn run run-net-local` from the root dir in a terminal
+1. From the roor dir, build the docker image with this dommand `docker build -t yeager-hardhat -f packages/nft/Dockerfile .`
+
+Run the image: `docker run -d -p 8545:8545 -t yeager-hardhat`
+
+*or Run `yarn run run-net-local` from the root dir in a terminal*
 
 Save the first private key and address
 Also save the network url as it will be used later by metamask
 
-2. Create a `.env` file under `packages/nft` with the following keys `PRIVATE_KEY` and `ADDRESS` with the valued taken from step 1
+2. Deploy the contract by connecting (Remix ethereum)[https://remix.ethereum.org/] to the hardhat host (by default it's `http://0.0.0.0:8545`)
+
+Get the deployed contract address and save it for later
+
+---
+Or Create a `.env` file under `packages/nft` with the following keys `PRIVATE_KEY` and `ADDRESS` with the valued taken from step 1
 
 Ex:
 ```
@@ -121,9 +130,11 @@ Run `yarn run deploy-contract-local` in another terminal from the root dir to de
 
 Then you can find the file `packages/nft/token.json`. Use the `"target"` property to get the deployed contract address and save it for later
 
+---
+
 You will later use the saved variables as env variables for the application
 
-Through metamask onnect to the local network by providing the network url from above and the hardhat default chain id (31337)
+Through metamask connect to the local network by providing the network url from above and the hardhat default chain id (31337)
 
 **To run on sepolia**
 
