@@ -12,7 +12,7 @@ dotenv.config();
 
 async function main() {
   const Token = await hre.ethers.getContractFactory("Token");
-  const token = await Token.deploy(process.env.ADDRESS);
+  const token = await Token.deploy('0xf39Fd6e51aad88F6F4ce6aB8827279cffFb92266');
 
 
   await token.waitForDeployment();
