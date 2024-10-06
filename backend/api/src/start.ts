@@ -5,7 +5,7 @@ import { createLogger } from "./logger/logger.js";
 
 async function start() {
   // load config
-  const config = loadConfig();
+  const config = await loadConfig();
 
   // create startup logger
   const logger = createLogger(config);

@@ -1,8 +1,8 @@
 import dotenv from "dotenv";
-import hardHatConfig from './hardhat/config.json' with {type: "json"}
 import loggerConfig from './logger/config.json' with {type: "json"}
 import { z } from "zod";
 import {ethers} from 'ethers'
+import { getConfig } from "./hardhat/configResolver.js";
 
 dotenv.config()
 
@@ -21,13 +21,14 @@ export const envConfigSchema = z.object({
 
 
 //TODO: get secrets using a secure secrets manager
-export const loadConfig = () => {
+export const loadConfig = async () => {
     const envConfig = envConfigSchema.parse(process.env)
+    const hardhatConfig = await getConfig(envConfig.NODE_ENV)
     return {
         ...envConfig,
-        hardHat: hardHatConfig,
+        hardHat: hardhatConfig,
         logger: loggerConfig
     }
 };
 
-export type Config = ReturnType<typeof loadConfig>
+export type Config = Awaited<ReturnType<typeof loadConfig>>
