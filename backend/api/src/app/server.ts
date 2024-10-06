@@ -99,7 +99,7 @@ export class Server {
     logger.log("info", "Starting server");
     logger.log("info", "NODE_ENV: ", config.NODE_ENV);
 
-    this.app.listen(8080, () => {
+    this.app.listen(80, () => {
       // The port should be in sync with the port used in the docker file
       logger.log("info", `server listening on port 80`);
     });
