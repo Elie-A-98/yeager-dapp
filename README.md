@@ -108,35 +108,24 @@ You can use a local hardhat blockchain network or sepolia testnet.
 
 Run the image: `docker run -d -p 8545:8545 -t yeager-hardhat`
 
-*or Run `yarn run run-net-local` from the root dir in a terminal*
+Get the docker container id with `docker container ps`
 
-Save the first private key and address
-Also save the network url as it will be used later by metamask
+2. Deploy the contract by running `docker exec <container_id> yarn run deploy-contract-local`
 
-2. Deploy the contract. You can use (Remix ethereum)[https://remix.ethereum.org/] to connect your local file system by going to `packages/nft` and running `remixd`, then from (Remix ethereum)[https://remix.ethereum.org/] connecting to localhost
+Or You can use (Remix ethereum)[https://remix.ethereum.org/] to connect your local file system by going to `packages/nft` and running `remixd`, then from (Remix ethereum)[https://remix.ethereum.org/] connecting to localhost
 
 *Use the compiler version 0.8.20 to compile and deploy the contract*
 
-Get the deployed contract address and save it for later
+By default the contract will be deployed from the first account provided by hardhat.
 
----
-Or Create a `.env` file under `packages/nft` with the following keys `PRIVATE_KEY` and `ADDRESS` with the valued taken from step 1
-
-Ex:
 ```
-PRIVATE_KEY = 0xac0974bec39a17e36ba4a6b4d238ff944bacb478cbed5efcae784d7bf4f2ff80
-ADDRESS = 0xf39Fd6e51aad88F6F4ce6aB8827279cffFb92266
+Account #0: 0xf39Fd6e51aad88F6F4ce6aB8827279cffFb92266 (10000 ETH)
+Private Key: 0xac0974bec39a17e36ba4a6b4d238ff944bacb478cbed5efcae784d7bf4f2ff80
 ```
 
-Run `yarn run deploy-contract-local` in another terminal from the root dir to deploy the contract. Use `nvm use` if prompted
+You will later use these as env variables for the application
 
-Then you can find the file `packages/nft/token.json`. Use the `"target"` property to get the deployed contract address and save it for later
-
----
-
-You will later use the saved variables as env variables for the application
-
-Through metamask connect to the local network by providing the network url from above and the hardhat default chain id (31337)
+Through metamask connect to hardhat by providing the network url of hardhat and the hardhat default chain id (31337)
 
 **To run on sepolia**
 
