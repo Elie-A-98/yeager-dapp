@@ -1,10 +1,10 @@
 <script setup lang="ts">
-import { useConnectedAccount, useContract } from '@/ethereum';
+import { useConnectedAccount, useConnectedContract } from '@/ethereum';
 
 const props = defineProps < {
     tokenId: number
 } > ()
-const contract = useContract()
+const contract = useConnectedContract()
 const account = useConnectedAccount()
 
 const isOwner = (await contract.value.ownerOf(props.tokenId)) === account.value

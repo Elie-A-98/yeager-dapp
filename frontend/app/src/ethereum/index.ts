@@ -11,10 +11,6 @@ export function assertIsEthereumInjected(
   }
 }
 
-export function isOnCorrectNetwork(chainId: EthereuemProvidedProps['chainId']) {
-  return chainId.value === CHAIN_ID
-}
-
 export function isAccountConnected(
   account: EthereuemProvidedProps['account']
 ): account is Ref<string> {
@@ -29,11 +25,17 @@ export function assertIsAccountConnected(
   }
 }
 
+function isContractConnected(
+  contract: ReturnType<typeof inject<EthereuemProvidedProps>>['contract']
+) {
+  return contract.value !== undefined
+}
+
 export function assertIsContractConnected(
-  signer: ReturnType<typeof inject<EthereuemProvidedProps>>['contract']
-): asserts signer is Ref<ethers.BaseContract> {
-  if (signer.value === undefined) {
-    throw new Error('Contract is not connected to a signer')
+  contract: ReturnType<typeof inject<EthereuemProvidedProps>>['contract']
+): asserts contract is Ref<ethers.BaseContract> {
+  if (!isContractConnected(contract)) {
+    throw new Error('Contract is not connected')
   }
 }
 
@@ -49,8 +51,15 @@ export const useConnectedAccount = () => {
   return ethereum.account
 }
 
-export const useContract = () => {
+export const useConnectedContract = () => {
   const ethereum = useEthereum()
   assertIsContractConnected(ethereum.contract)
   return ethereum.contract
+}
+
+export function isOnCorrectNetwork(
+  chainId: EthereuemProvidedProps['chainId'],
+  contract: EthereuemProvidedProps['contract']
+) {
+  return chainId.value === CHAIN_ID && isContractConnected(contract)
 }

@@ -1,15 +1,18 @@
 <script setup lang="ts">
 import { isOnCorrectNetwork, useEthereum } from '@/ethereum';
 import { translate } from '@/i18n'
+import { watchEffect } from 'vue';
 import { useRouter } from 'vue-router';
 
 const router = useRouter();
 const ethereum = useEthereum()
 
-if (isOnCorrectNetwork(ethereum.chainId)) {
-    const redirect = router.currentRoute.value.query.redirect || ''
-    router.replace(`/${redirect}`)
-}
+watchEffect(() => {
+    if (isOnCorrectNetwork(ethereum.chainId, ethereum.contract)) {
+        const redirect = router.currentRoute.value.query.redirect || ''
+        router.replace(`/${redirect}`)
+    }
+})
 </script>
 
 <template>

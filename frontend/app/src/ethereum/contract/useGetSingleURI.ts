@@ -1,4 +1,4 @@
-import { useContract } from '../index'
+import { useConnectedContract } from '../index'
 import { z } from 'zod'
 
 const getSingleAssetSchema = z.object({
@@ -9,7 +9,7 @@ export type GetSingleAssetRequest = z.infer<typeof getSingleAssetSchema>
 
 export const useGetSingleURI = (request: GetSingleAssetRequest) => {
   getSingleAssetSchema.parse(request)
-  const contract = useContract()
+  const contract = useConnectedContract()
   const call = () => contract.value.tokenURI(request.tokenId)
 
   return {

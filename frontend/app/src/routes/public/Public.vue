@@ -1,19 +1,21 @@
 <script setup lang="ts">
-import { isAccountConnected, isOnCorrectNetwork, useConnectedAccount, useEthereum } from '@/ethereum';
-import { isEmpty } from '@/strings/validation';
-import { computed, watch } from 'vue';
-import { useRouter } from 'vue-router';
-
-const ethereum = useEthereum();
-const router = useRouter();
-
-if (isAccountConnected(ethereum.account) && isOnCorrectNetwork(ethereum.chainId)) {
-    const redirect = router.currentRoute.value.query.redirect || ''
-    router.replace(`/${redirect}`)
-}
-
+import ThreeRowsLayout from '@/components/layouts/ThreeRowsLayout.vue'
+import NavHeader from '@/components/NavHeader.vue'
+import Footer from '@/components/Footer.vue';
 </script>
 
 <template>
-    <RouterView />
+    <ThreeRowsLayout>
+        <template v-slot:header>
+            <NavHeader />
+        </template>
+        <template v-slot:main>
+            <div class="main">
+                <RouterView />
+            </div>
+        </template>
+        <template v-slot:footer>
+            <Footer />
+        </template>
+    </ThreeRowsLayout>
 </template>

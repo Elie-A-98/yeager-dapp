@@ -1,11 +1,11 @@
 import type { BrowserProvider } from 'ethers'
 import type { Eip1193Provider, ethers } from 'ethers'
-import type { DeepReadonly, InjectionKey, Ref } from 'vue'
+import type { DeepReadonly, InjectionKey, Ref, ShallowRef } from 'vue'
 
 export const CHAIN_ID = import.meta.env.VITE_NETWORK === 'Hardhat' ? 31337 : 11155111 
 
 export type EthereuemProvidedProps = {
-  contract: Readonly<Ref<ethers.BaseContract | undefined>>
+  contract: Readonly<ShallowRef<ethers.BaseContract | undefined>>
   account: Readonly<Ref<string | undefined>>
   availableProviders: DeepReadonly<Ref<ProviderInfo[]>>
   connectToProvider: () => Promise<void>

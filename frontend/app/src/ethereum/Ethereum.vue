@@ -4,38 +4,53 @@ import {
   provide,
   readonly,
   ref,
-  watch
+  shallowRef,
 } from 'vue'
 import { ethereumInjectionKey, MetamaskConnectionError, type ProviderInfo } from './definitions'
 import * as token from '@yeager/nft/token.json' with {type: "json"}
 import { ethers } from 'ethers';
+import type { JsonRpcSigner } from 'ethers';
 const metamaskDetected = ref(false)
-const connectedContract = ref<ethers.BaseContract | undefined>()
+const connectedContract = shallowRef<ethers.BaseContract | undefined>()
 const availableProviders = ref<ProviderInfo[]>([])
 
 const activeAccount = ref<string | undefined>(undefined)
 const chainId = ref<number | undefined>(undefined)
 
+
 const connectToProvider = async () => {
   if (window.ethereum) {
+    window.ethereum.removeAllListeners();
+
     const provider = new ethers.BrowserProvider(window.ethereum)
     const contract = new ethers.Contract(import.meta.env.VITE_CONTRACT_ADDRESS, token.abi, provider)
-    chainId.value = ethers.toNumber((await provider.getNetwork()).chainId)
-    const updateAccount = async (account: string) => {
-      const signer = await provider.getSigner(account)
 
-      if (signer) {
+    chainId.value = ethers.toNumber((await provider.getNetwork()).chainId)
+
+    const connectContract = async (signer: JsonRpcSigner) => {
+      const contractCode = await provider.getCode(import.meta.env.VITE_CONTRACT_ADDRESS)
+      if (contractCode !== '0x' && signer) {
         connectedContract.value = contract.connect(signer)
-        activeAccount.value = await signer.getAddress()
+      } else {
+        connectedContract.value = undefined
       }
     }
-    window.ethereum.on('accountsChanged', function (accounts: string[]) {
-      updateAccount(accounts[0])
+
+    const onAccountChanged = async (newAccount: string) =>{
+      const signer = await provider.getSigner(newAccount);
+      await connectContract(signer)
+      activeAccount.value = await signer.getAddress()
+    }
+    window.ethereum.on('accountsChanged', async function (accounts: string[]) {
+      await onAccountChanged(accounts[0])
     })
 
-
+    window.ethereum.on('chainChanged', async function (newChainId: string) {
+      const signer = await provider.getSigner()
+      await connectContract(signer)
+    })
     return provider.send("eth_requestAccounts", []).then(async (accounts: string[]) => {
-      updateAccount(accounts[0])
+      await onAccountChanged(accounts[0])
     })
   } else {
     throw new MetamaskConnectionError()
@@ -44,9 +59,6 @@ const connectToProvider = async () => {
 }
 
 onMounted(async () => {
-  window.ethereum.on('chainChanged', function (newChainId: string) {
-    chainId.value = ethers.toNumber(newChainId)
-  })
   window.addEventListener(
     'eip6963:announceProvider',
     async (event: EIP6963AnnounceProviderEvent) => {

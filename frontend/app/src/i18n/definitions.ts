@@ -39,7 +39,7 @@ const BASE_LANG = {
   'mint-request.success': 'Token Minted!',
   'transfer-asset.title': 'Transfer your asset',
   'page-not-found.title': 'Page Not Found',
-  'wrong-network.prompt': `Please connect to the right network. The chain id should be ${CHAIN_ID}`,
+  'wrong-network.prompt': `Unable to find the contract. Please make sure that you are on the correct network. The chain id should be ${CHAIN_ID}`,
   'token-details.noot-yours': `This asset is not yours so you can't transfer it`
 }
 

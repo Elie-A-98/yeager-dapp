@@ -1,9 +1,5 @@
 @import './base.css';
 
-#app {
-  height: 100%;
-}
-
 p {
   max-width: 75ch;
   margin: auto;

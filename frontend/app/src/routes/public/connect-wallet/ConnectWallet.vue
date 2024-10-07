@@ -4,14 +4,17 @@ import { isAccountConnected, useEthereum } from '@/ethereum'
 import { metamaskProviderInfo } from '@/ethereum/definitions';
 import { useRouter } from 'vue-router';
 import { useToast } from '@/toast';
+import { watchEffect } from 'vue';
 const router = useRouter();
 const toast = useToast();
 const ethereum = useEthereum();
 
-if (isAccountConnected(ethereum.account)) {
-    const redirect = router.currentRoute.value.query.redirect || ''
-    router.replace(`/${redirect}`)
-}
+watchEffect(() => {
+    if (isAccountConnected(ethereum.account)) {
+        const redirect = router.currentRoute.value.query.redirect || ''
+        router.replace(`/${redirect}`)
+    }
+})
 
 const connect = () => ethereum.connectToProvider().catch(err =>
     toast.add({

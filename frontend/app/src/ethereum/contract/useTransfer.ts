@@ -1,4 +1,4 @@
-import { useConnectedAccount, useContract } from '../index'
+import { useConnectedAccount, useConnectedContract } from '../index'
 import { ethers } from 'ethers'
 import { z } from 'zod'
 import { translate } from '@/i18n'
@@ -13,7 +13,7 @@ export const transferRequestSchema = z.object({
 export type TransferRequest = z.infer<typeof transferRequestSchema>
 
 export const useTransfer = () => {
-  const contract = useContract()
+  const contract = useConnectedContract()
   const account = useConnectedAccount()
   //TODO: check if the user is approved to transfer first
   return {

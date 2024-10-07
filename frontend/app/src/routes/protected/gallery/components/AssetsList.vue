@@ -12,6 +12,7 @@ type Asset = Metadata & { imgSrc: string, tokenId: string }
 const toast = useToast();
 
 const account = useConnectedAccount();
+
 const urisGetter = useGetAllURIsAndTokenIds({
     from: account.value
 });
