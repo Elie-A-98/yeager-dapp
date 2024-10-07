@@ -42,7 +42,7 @@ That being said I gave this project priority and I invested time to ensure that 
 
 **Please note that I will secure the website with an SSL certificate, but to save time I submitted it working on http for now. I will use certbot and integrate it with my already configured nginx server**
 
-There are 2 environments: dev and production
+There are 2 environments: dev (better: don't require eth) and production(requires sepolia eth)
 
 **Dev: [http://yeager-dev.elie-atamech.com](http://yeager.elie-atamech.com)**
 
@@ -254,7 +254,18 @@ Then run the frontend with this command `docker run -d -t yeager-frontend` and *
 
 **Notice here the env variables start with `MY_`**
 
-Ex: `docker run --env=MY_VITE_NODE_ENV=Development --env=MY_VITE_NETWORK=Sepolia --env=MY_VITE_APP_NAME="Yeager DApp" --env=MY_VITE_HOST_URL=http://localhost:8080 --env=MY_VITE_CONTRACT_ADDRESS=0x47bd5885386087A5Efc6e2A0eA16074BBBa4002e --env=MY_VITE_PINATA_GATEWAY_URL=YOUR_PINATA_GATEWAY_URL -p 3000:80 -d yeager-frontend:latest`
+Ex: 
+
+for hardhat
+```
+`docker run --env=MY_VITE_NODE_ENV=Development --env=MY_VITE_NETWORK=Hardhat --env=MY_VITE_NETWORK_URL=http://13.60.80.109:8545 --env=MY_VITE_CHAIN_ID=31337 --env=MY_VITE_APP_NAME="Yeager DApp" --env=MY_VITE_HOST_URL=http://13.60.80.109:80 --env=MY_VITE_CONTRACT_ADDRESS=0x9fe46736679d2d9a65f0992f2272de9f3c7fa6e0 --env=MY_VITE_PINATA_GATEWAY_URL=https://salmon-defiant-meerkat-23.mypinata.cloud/ipfs -p 3000:80 -d elie101001/yeager-frontend:latest`
+```
+
+
+for sepolia
+```
+`docker run --env=MY_VITE_NODE_ENV=Development --env=MY_VITE_NETWORK=Sepolia --env=MY_VITE_NETWORK_URL=https://sepolia.infura.io/v3 --env=MY_VITE_CHAIN_ID=11155111 --env=MY_VITE_APP_NAME="Yeager DApp" --env=MY_VITE_HOST_URL=http://localhost:8080 --env=MY_VITE_CONTRACT_ADDRESS=0x47bd5885386087A5Efc6e2A0eA16074BBBa4002e --env=MY_VITE_PINATA_GATEWAY_URL=YOUR_PINATA_GATEWAY_URL -p 3000:80 -d yeager-frontend:latest`
+```
 
 **By now the application is running, you can skip to the next section.**
 
