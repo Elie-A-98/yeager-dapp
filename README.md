@@ -42,6 +42,14 @@ That being said I gave this project priority and I invested time to ensure that 
 
 **Please note that I will secure the website with an SSL certificate, but to save time I submitted it working on http for now. I will use certbot and integrate it with my already configured nginx server**
 
+There are 2 environments: dev and production
+
+**Dev: [http://yeager-dev.elie-atamech.com](http://yeager.elie-atamech.com)**
+
+Dev is connected to a hardhat network so you don't need to get sepolia eth to check the application
+
+**Production: [http://yeager.elie-atamech.com](http://yeager.elie-atamech.com)**
+
 When you mint a token, the contract owner is doing it for you (explained later in the DApp overview section, but for short it's to avoid adding complexity to the token creation).
 
 So if you face a `Problem occured` it is because the owner doesn't have enough sepolia ETH to mint new tokens. In that case please send the owner `0x47bd5885386087A5Efc6e2A0eA16074BBBa4002e` sepolia eth for the minting feature to work.
@@ -50,8 +58,6 @@ So if you face a `Problem occured` it is because the owner doesn't have enough s
 ***I used [chain link](https://faucets.chain.link/sepolia) and [google faucet](https://cloud.google.com/application/web3/faucet/ethereum/sepolia) to get free sepolia ETH***
 
 ---
-
-The frontend is deployed to a subdomain [http://yeager.elie-atamech.com](http://yeager.elie-atamech.com)
 
 You can add `/en/` or `/fr` or `/it` ad the end of the url to set the language
 
