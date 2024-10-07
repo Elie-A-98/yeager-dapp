@@ -17,28 +17,28 @@ const availableProviders = ref<ProviderInfo[]>([])
 const activeAccount = ref<string | undefined>(undefined)
 const chainId = ref<number | undefined>(undefined)
 
+const getContract = async () => {
+  const provider = new ethers.BrowserProvider(window.ethereum)
+  const contract = new ethers.Contract(import.meta.env.VITE_CONTRACT_ADDRESS, token.abi, provider)
+  const contractCode = await provider.getCode(import.meta.env.VITE_CONTRACT_ADDRESS)
+  if (contractCode !== '0x') {
+    return contract
+  } else {
+    return undefined
+  }
+}
 
 const connectToProvider = async () => {
   if (window.ethereum) {
     window.ethereum.removeAllListeners();
 
     const provider = new ethers.BrowserProvider(window.ethereum)
-    const contract = new ethers.Contract(import.meta.env.VITE_CONTRACT_ADDRESS, token.abi, provider)
 
     chainId.value = ethers.toNumber((await provider.getNetwork()).chainId)
 
-    const connectContract = async (signer: JsonRpcSigner) => {
-      const contractCode = await provider.getCode(import.meta.env.VITE_CONTRACT_ADDRESS)
-      if (contractCode !== '0x' && signer) {
-        connectedContract.value = contract.connect(signer)
-      } else {
-        connectedContract.value = undefined
-      }
-    }
-
-    const onAccountChanged = async (newAccount: string) =>{
+    const onAccountChanged = async (newAccount: string) => {
       const signer = await provider.getSigner(newAccount);
-      await connectContract(signer)
+      connectedContract.value = await getContract()
       activeAccount.value = await signer.getAddress()
     }
     window.ethereum.on('accountsChanged', async function (accounts: string[]) {
@@ -46,8 +46,8 @@ const connectToProvider = async () => {
     })
 
     window.ethereum.on('chainChanged', async function (newChainId: string) {
-      const signer = await provider.getSigner()
-      await connectContract(signer)
+      chainId.value = parseInt(newChainId)
+      connectedContract.value = await getContract()
     })
     return provider.send("eth_requestAccounts", []).then(async (accounts: string[]) => {
       await onAccountChanged(accounts[0])
