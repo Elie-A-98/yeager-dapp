@@ -85,8 +85,8 @@ nav {
     margin: 0;
     top: 50px;
     left: 0;
-    width: 100vw;
     z-index: 5;
+    width: 100%;
     transform: scale(1, 0);
     transform-origin: top;
     transition: transform 0.3s ease-in-out;
