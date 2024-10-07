@@ -1,4 +1,3 @@
-import { CHAIN_ID } from '@/ethereum/definitions'
 import type { InjectionKey } from 'vue'
 
 export const SUPPORTED_LANGUAGES = ['en', 'fr', 'it'] as const
@@ -40,7 +39,7 @@ const BASE_LANG = {
   'transfer-asset.title': 'Transfer your asset',
   'transfer-asset.token-transfered': 'Token transfered !',
   'page-not-found.title': 'Page Not Found',
-  'wrong-network.prompt': `Unable to find the contract. Please make sure that you are on the correct network. The chain id should be ${CHAIN_ID}`,
+  'wrong-network.prompt': `Unable to find the contract. Please make sure that you are on the correct network. The chain id should be ${import.meta.env.VITE_CHAIN_ID} and the network url should be ${import.meta.env.VITE_NETWORK_URL}`,
   'token-details.noot-yours': `This asset is not yours so you can't transfer it`
 }
 
@@ -77,8 +76,8 @@ export const dictionary = {
     'transfer-asset.token-transfered': 'Token transfered !',
 
     'page-not-found.title': 'Page non trouvée',
-    'wrong-network.prompt':
-      'Veuillez vous connecter au bon réseau. L’identifiant de chaîne doit être ${CHAIN_ID}',
+    'wrong-network.prompt': `Unable to find the contract. Please make sure that you are on the correct network. The chain id should be ${import.meta.env.VITE_CHAIN_ID} and the network url should be ${import.meta.env.VITE_NETWORK_URL}`,
+
     'token-details.noot-yours': "Cet actif n'est pas à vous, donc vous ne pouvez pas le transférer"
   },
   it: {
@@ -112,8 +111,8 @@ export const dictionary = {
     'transfer-asset.token-transfered': 'Token transfered !',
 
     'page-not-found.title': 'Pagina non trovata',
-    'wrong-network.prompt':
-      "Si prega di connettersi alla rete corretta. L'ID della catena deve essere ${CHAIN_ID}",
+    'wrong-network.prompt': `Unable to find the contract. Please make sure that you are on the correct network. The chain id should be ${import.meta.env.VITE_CHAIN_ID} and the network url should be ${import.meta.env.VITE_NETWORK_URL}`,
+
     'token-details.noot-yours': 'Questo asset non è tuo, quindi non puoi trasferirlo'
   }
   // will ensure we have all the sentences implemented in all the languages that we support

@@ -30,6 +30,8 @@ COPY --from=builder /app/yarn.config.cjs .
 
 # TODO: pass variables with docker compose
 RUN echo "VITE_NETWORK=MY_VITE_NETWORK" >> /app/frontend/app/.env \
+    && echo "VITE_NETWORK_URL=MY_VITE_NETWORK_URL" >> /app/frontend/app/.env \
+    && echo "VITE_CHAIN_ID=MY_VITE_CHAIN_ID" >> /app/frontend/app/.env \
     && echo "VITE_NODE_ENV=MY_VITE_NODE_ENV" >> /app/frontend/app/.env \
     && echo "VITE_APP_NAME=MY_VITE_APP_NAME" >> /app/frontend/app/.env \
     && echo "VITE_HOST_URL=MY_VITE_HOST_URL" >> /app/frontend/app/.env \

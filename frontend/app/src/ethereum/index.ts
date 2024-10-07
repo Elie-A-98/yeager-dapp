@@ -1,5 +1,5 @@
 import { inject, type Ref } from 'vue'
-import { CHAIN_ID, ethereumInjectionKey, type EthereuemProvidedProps } from './definitions.js'
+import { ethereumInjectionKey, type EthereuemProvidedProps } from './definitions.js'
 import { isEmpty } from '@/strings/validation.js'
 import type { ethers } from 'ethers'
 
@@ -61,5 +61,5 @@ export function isOnCorrectNetwork(
   chainId: EthereuemProvidedProps['chainId'],
   contract: EthereuemProvidedProps['contract']
 ) {
-  return chainId.value === CHAIN_ID && isContractConnected(contract)
+  return chainId.value === parseInt(import.meta.env.VITE_CHAIN_ID) && isContractConnected(contract)
 }
