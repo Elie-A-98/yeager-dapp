@@ -38,6 +38,7 @@ const BASE_LANG = {
   'mint-request.form.asset': 'Asset',
   'mint-request.success': 'Token Minted!',
   'transfer-asset.title': 'Transfer your asset',
+  'transfer-asset.token-transfered': 'Token transfered !',
   'page-not-found.title': 'Page Not Found',
   'wrong-network.prompt': `Unable to find the contract. Please make sure that you are on the correct network. The chain id should be ${CHAIN_ID}`,
   'token-details.noot-yours': `This asset is not yours so you can't transfer it`
@@ -73,6 +74,8 @@ export const dictionary = {
     'mint-request.form.asset': 'Actif',
     'mint-request.success': 'Token Minté !',
     'transfer-asset.title': 'Transférez votre actif',
+    'transfer-asset.token-transfered': 'Token transfered !',
+
     'page-not-found.title': 'Page non trouvée',
     'wrong-network.prompt':
       'Veuillez vous connecter au bon réseau. L’identifiant de chaîne doit être ${CHAIN_ID}',
@@ -106,6 +109,8 @@ export const dictionary = {
     'mint-request.form.asset': 'Asset',
     'mint-request.success': 'Token Mintato!',
     'transfer-asset.title': 'Trasferisci il tuo asset',
+    'transfer-asset.token-transfered': 'Token transfered !',
+
     'page-not-found.title': 'Pagina non trovata',
     'wrong-network.prompt':
       "Si prega di connettersi alla rete corretta. L'ID della catena deve essere ${CHAIN_ID}",

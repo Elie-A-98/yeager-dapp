@@ -18,13 +18,20 @@ const onSubmit = (_: Event, data: TransferRequest) => {
   return transfer.call({
     to: data.to,
     tokenId: data.tokenId
-  }).catch(_ => {
-    toast.add({
-      type: 'error',
-      message: translate('common.problem-occured'),
-      position: 'top-center'
+  },
+    () => {
+      toast.add({
+        type: 'success',
+        position: 'top-center',
+        message: translate('transfer-asset.token-transfered')
+      })
+    }).catch(_ => {
+      toast.add({
+        type: 'error',
+        message: translate('common.problem-occured'),
+        position: 'top-center'
+      })
     })
-  })
 }
 </script>
 

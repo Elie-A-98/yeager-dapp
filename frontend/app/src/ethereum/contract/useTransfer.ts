@@ -17,8 +17,17 @@ export const useTransfer = () => {
   const account = useConnectedAccount()
   //TODO: check if the user is approved to transfer first
   return {
-    call: (request: TransferRequest) => {
+    call: (request: TransferRequest, onTransfer?: () => void) => {
       transferRequestSchema.parse(request)
+      if (onTransfer) {
+        contract.value.once('Transfer', (...args) => {
+          const [from, to, tokenIdN] = args
+          const tokenId = ethers.toNumber(tokenIdN)
+          if (from === account.value && to === request.to && tokenId === request.tokenId) {
+            onTransfer()
+          }
+        })
+      }
       return contract.value.safeTransferFrom(account.value, request.to, request.tokenId)
     }
   }
