@@ -17,8 +17,25 @@ export const useGetAllURIsAndTokenIds = (request: GetAssetRequest) => {
   const contract = useContract()
   const call = async () => {
     const res: { tokenId: number; uri: string }[] = []
-    const totalSupply = await contract.value.totalSupply().then((res) => ethers.toNumber(res))
-    const balance = await contract.value.balanceOf(request.from).then((res) => ethers.toNumber(res))
+    let totalSupply = 0
+    await contract.value
+      .totalSupply()
+      .then((res) => {
+        totalSupply = ethers.toNumber(res)
+      })
+      // eslint-disable-next-line @typescript-eslint/no-unused-vars
+      .catch((_) => {
+        // For now the contract throws an error if total supply = 0.
+        // TODO: fix this from the contract
+      })
+    const balance = await contract.value
+      .balanceOf(request.from)
+      .then((res) => ethers.toNumber(res))
+      // eslint-disable-next-line @typescript-eslint/no-unused-vars
+      .catch((_) => {
+        // For now the contract throws an error if total supply = 0.
+        // TODO: fix this from the contract
+      })
     let k = 0
     for (let i = 0; i < totalSupply; i++) {
       if (k === balance) continue
