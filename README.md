@@ -244,7 +244,7 @@ Please follow these steps to build and run the containers.
 
 In the root directory in the terminal run `docker build -t yeager-backend -f backend/api/Dockerfile .`
 
-Then run the backend with this command `docker run -d -t yeager-backend` and map the ports
+Then run the backend with this command `docker run -d -p <your_port>:80 -t yeager-backend` and map the ports
 
 Ex: `docker run -d -p 8080:80 -t yeager-backend`
 
@@ -258,7 +258,7 @@ Ex:
 
 for hardhat
 ```
-`docker run --env=MY_VITE_NODE_ENV=Development --env=MY_VITE_NETWORK=Hardhat --env=MY_VITE_NETWORK_URL=http://13.60.80.109:8545 --env=MY_VITE_CHAIN_ID=31337 --env=MY_VITE_APP_NAME="Yeager DApp" --env=MY_VITE_HOST_URL=http://13.60.80.109:80 --env=MY_VITE_CONTRACT_ADDRESS=0x9fe46736679d2d9a65f0992f2272de9f3c7fa6e0 --env=MY_VITE_PINATA_GATEWAY_URL=https://salmon-defiant-meerkat-23.mypinata.cloud/ipfs -p 3000:80 -d elie101001/yeager-frontend:latest`
+`docker run --env=MY_VITE_NODE_ENV=Development --env=MY_VITE_NETWORK=Hardhat --env=MY_VITE_NETWORK_URL=http://13.60.80.109:8545 --env=MY_VITE_CHAIN_ID=31337 --env=MY_VITE_APP_NAME="Yeager DApp" --env=MY_VITE_HOST_URL=http://13.60.80.109:80 --env=MY_VITE_CONTRACT_ADDRESS=0x5FbDB2315678afecb367f032d93F642f64180aa3 --env=MY_VITE_PINATA_GATEWAY_URL=https://salmon-defiant-meerkat-23.mypinata.cloud/ipfs -p 3000:80 -d elie101001/yeager-frontend:latest`
 ```
 
 
