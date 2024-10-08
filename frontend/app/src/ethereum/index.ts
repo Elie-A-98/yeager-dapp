@@ -57,6 +57,12 @@ export const useConnectedContract = () => {
   return ethereum.contract
 }
 
+export const useReadonlyContract = () => {
+  const ethereum = useEthereum()
+  assertIsContractConnected(ethereum.readonlyContract)
+  return ethereum.readonlyContract
+}
+
 export function isOnCorrectNetwork(
   chainId: EthereuemProvidedProps['chainId'],
   contract: EthereuemProvidedProps['contract']

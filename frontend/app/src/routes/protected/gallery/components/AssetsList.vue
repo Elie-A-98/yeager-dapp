@@ -1,8 +1,8 @@
 <script setup lang="ts">
 import { translate } from '@/i18n';
-import { ref } from 'vue'
+import { onMounted, onUnmounted, ref } from 'vue'
 import { useGetAllURIsAndTokenIds } from '@/ethereum/contract/useGetAllURIs';
-import { useConnectedAccount } from '@/ethereum';
+import { useConnectedAccount, useReadonlyContract } from '@/ethereum';
 import { getImageUrlFromMetadata, getMetadataFromUri, type Metadata } from '@/ethereum/ipfs';
 import { useToast } from '@/toast';
 import ImageCard from './ImageCard.vue';
@@ -11,6 +11,7 @@ type Asset = Metadata & { imgSrc: string, tokenId: string }
 
 const toast = useToast();
 
+const readContract = useReadonlyContract();
 const account = useConnectedAccount();
 
 const urisGetter = useGetAllURIsAndTokenIds({
@@ -42,6 +43,30 @@ try {
     })
     throw err
 }
+
+const handleMetadataUpdate = async (newTokenId: number) => {
+    toast.add({
+        type: 'info',
+        position: 'top-center',
+        message: 'You received a new asset !'
+    })
+    const newUri = await readContract.value.tokenURI(newTokenId)
+    const newMetadata = await getMetadataFromUri(newUri)
+    const imgSrc = await getImageUrlFromMetadata(newMetadata)
+    allMetadata.value = [{
+        ...newMetadata,
+        imgSrc,
+        tokenId: String(newTokenId)
+    }, ...allMetadata.value]
+}
+
+onMounted(async () => {
+    await readContract.value.on('MetadataUpdate', handleMetadataUpdate)
+})
+onUnmounted(async () => {
+    await readContract.value.off('MetadataUpdate', handleMetadataUpdate)
+})
+
 </script>
 
 <template>

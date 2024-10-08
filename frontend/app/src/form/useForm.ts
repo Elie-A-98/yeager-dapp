@@ -127,7 +127,12 @@ export const useForm = <TData extends Data = Data>(
         errors.value[key] = undefined
       })
       formState.value.isSubmitting = true
-      await handler(values.value)
+      try {
+        await handler(values.value)
+      } finally {
+        formState.value.isSubmitting = false
+      }
+    } else {
       formState.value.isSubmitting = false
     }
   }

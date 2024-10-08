@@ -4,6 +4,7 @@ import type { DeepReadonly, InjectionKey, Ref, ShallowRef } from 'vue'
 
 export type EthereuemProvidedProps = {
   contract: Readonly<ShallowRef<ethers.BaseContract | undefined>>
+  readonlyContract: Readonly<ShallowRef<ethers.BaseContract | undefined>>
   account: Readonly<Ref<string | undefined>>
   availableProviders: DeepReadonly<Ref<ProviderInfo[]>>
   connectToProvider: () => Promise<void>

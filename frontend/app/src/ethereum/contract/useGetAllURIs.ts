@@ -1,6 +1,6 @@
 import { translate } from '@/i18n'
 import { ethers } from 'ethers'
-import { useConnectedContract } from '../index.js'
+import { useReadonlyContract } from '../index.js'
 import { z } from 'zod'
 
 const getAssetSchema = z.object({
@@ -14,7 +14,7 @@ export type GetAssetRequest = z.infer<typeof getAssetSchema>
 //TODO: Accept an Abort controller
 export const useGetAllURIsAndTokenIds = (request: GetAssetRequest) => {
   getAssetSchema.parse(request)
-  const contract = useConnectedContract()
+  const contract = useReadonlyContract()
   const call = async () => {
     const res: { tokenId: number; uri: string }[] = []
     let totalSupply = 0

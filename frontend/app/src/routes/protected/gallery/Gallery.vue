@@ -21,7 +21,8 @@ import AssetsList from './components/AssetsList.vue';
     margin-top: var(--spacing-2);
     text-align: center;
 }
-.loading{
+
+.loading {
     text-align: center;
     margin-top: var(--spacing-2);
 }

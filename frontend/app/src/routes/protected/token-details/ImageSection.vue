@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { useGetSingleURI } from '@/ethereum/contract/useGetSingleURI';
+import { useReadonlyContract } from '@/ethereum';
 import { getImageUrlFromMetadata, getMetadataFromUri, type Metadata } from '@/ethereum/ipfs';
 import { onMounted, ref } from 'vue';
 
@@ -7,9 +7,7 @@ const props = defineProps<{
     tokenId: string
 }>()
 
-const uriGetter = useGetSingleURI({
-    tokenId: Number.parseInt(props.tokenId.toString())
-});
+const contract = useReadonlyContract();
 
 const metaData = ref<Metadata>({
     name: '',
@@ -20,7 +18,7 @@ const metaData = ref<Metadata>({
 const imgSrc = ref<string>('')
 
 onMounted(async () => {
-    const uri = await uriGetter.call()
+    const uri = await contract.value.tokenURI(parseInt(props.tokenId))
     metaData.value = await getMetadataFromUri(uri)
     imgSrc.value = await getImageUrlFromMetadata(metaData.value);
 })
