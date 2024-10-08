@@ -38,7 +38,7 @@ const add = (toast: Toast, route: string) => {
     setTimeout(() => {
         removeToast(route, key)
     }, toastDuration)
-    routeToToastsMap.value[route] = [...(routeToToastsMap.value.route || []), { key, toast, startTime }]
+    routeToToastsMap.value[route] = [...(routeToToastsMap.value[route] || []), { key, toast, startTime }]
 }
 
 const remove = (toast: Toast, route: string) => {
@@ -141,7 +141,7 @@ ul {
 }
 
 .info {
-    color: var(--color-primary);
-    background-color: var(--color-primary);
+    color: var(--color-text);
+    background-color: var(--color-accent);
 }
 </style>
