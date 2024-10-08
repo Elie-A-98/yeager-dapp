@@ -53,6 +53,8 @@ So you need to connect metamask to that hardhat network.
 Url: `http://13.60.80.109:8545`
 ChainId: 31337
 
+*When minting multiple times you might need to clear metamask cache if an error regarding wrong nonce appears.*
+
 Below are accounts you can use on that network
 
 ```
