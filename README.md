@@ -42,7 +42,7 @@ That being said I gave this project priority and I invested time to ensure that 
 
 **Please note that I will secure the website with an SSL certificate, but to save time I submitted it working on http for now. I will use certbot and integrate it with my already configured nginx server**
 
-There are 2 environments: dev (better: up to date and doesn't require eth) and production(outdated, needs deployment and requires sepolia eth)
+There are 2 environments: dev (better: provided accounts with eth) and production(requires you to send sepolia eth to the contract owner)
 
 **Dev: [http://yeager-dev.elie-atamech.com](http://yeager.elie-atamech.com)**
 
