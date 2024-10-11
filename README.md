@@ -393,8 +393,6 @@ Everything in `packages` is shared.
 
 ### 6.2 C4 Model
 
-As can be found on the website of the author of this model ([Simon Brown](https://simonbrown.je/)): *The [C4 model](https://c4model.com/) was created as a way to help software development teams describe and communicate software architecture, both during up-front design sessions and when retrospectively documenting an existing codebase* <br>
-
 I will only draw the C1 and C2 level. This is actually a recommendation from the C4 Model author as C3 and C4 are meant only for complex scenarios<br>
 
 *Note: The [IcePanel](https://app.icepanel.io/) platform was used to draw all C4 model levels*.
