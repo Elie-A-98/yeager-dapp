@@ -16,9 +16,7 @@ As stated in the root README.md file, i put the domain in the shared workspaces 
 
 ## CQRS
 
-Command Query Responsibility Segregation is a software design pattern that separates the flows of writing to the system and querying the system. 
-
-While this seperation is often physical in a real CQRS, I implemented a logical CQRS that fits well with the clean architecture.
+While the seperation is often physical in a real CQRS, I implemented a logical CQRS that fits well with the clean architecture.
 
 ![](../docs/backend/cqrs.png)
 
