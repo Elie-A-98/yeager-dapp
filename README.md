@@ -34,13 +34,12 @@
 
 This project took me about 1+ week in total. I was working on another project in parallel which forced me to shift my focus away at some times
 
-That being said I gave this project priority and I invested time to ensure that my skills were represented before sumitting
-
-**Please note that I am aware that this project is over engineered and If it was a real project I would have done things much simpler and faster.**
+This is overengineered on purpose. In. real world application for such simple requirements the code would have have been much simpler.
 
 # Live Application
 
-**Please note that I will secure the website with an SSL certificate, but to save time I submitted it working on http for now. I will use certbot and integrate it with my already configured nginx server**
+**To save AWS expenses and because this is a demo, i stopped the application.
+The website will be secured with an SSL certificate. I will use certbot and integrate it with my already configured nginx server**
 
 There are 2 environments: dev (better: provided accounts with eth) and production(requires you to send sepolia eth to the contract owner)
 
@@ -325,9 +324,7 @@ This is the original [Fullstack_js_-_Web3_Integration](./docs/planning/documents
 
 **I am aware that this project is over engineered and If it was a real project I would have done things much simpler and faster.**
 
-But I assumed that I have the flexibility to showcase my skills and demonstrate my ability to build from the ground up.
-
-So I assumed that I'm developing a MVP as a foundation for a full-scale application
+I assumed that I'm developing a POC as a foundation for a full-scale application
 
 ### 4.2 Approach
 
