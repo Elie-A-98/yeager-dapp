@@ -2,7 +2,7 @@
 
 # Announcement
 
-Please note that If this was a real project I would have used a more simple architecture. For a simple CRUD backend this is over engineered but I did this to showcase skills
+If this was a real project I would have used a more simple architecture. For a simple CRUD backend this is over engineered on purpose.
 
 ## Clean architecture
 
