@@ -1,6 +1,6 @@
 # Announcement
 
-**Please note that there are some things I would do differently in real a project. For the reason of sticking to the requirements and showing my capabilities I didn't use a ui library and I manually implemented some stuff that are better provided by libraries like nuxt or quasar, toasts and form composables**
+**I didn't use a ui library and I manually implemented some stuff that are better provided by libraries like nuxt or quasar, toasts and form composables. In a real world apllication it is better to use libraries for these concerns**
 
 # Front-End Web App
 
