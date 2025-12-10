@@ -3,6 +3,7 @@
 # Table of Contents
 
 [Announcement](#announcement)<br><br>
+[Project requirements](#project-requirements)<br><br>
 [Live Application](#live-application)<br><br>
 [Technical Summary](#technical-summary)<br><br>
 [1. How to Run](#1-how-to-run)<br>
@@ -35,6 +36,26 @@
 My main tech stack is .Net on the backend and react on the frontend but this demo project was done with NodeJs and Vue, and it contains things that I wouldn't do in a real world project.
 **(This is overengineered on purpose)**
 This project took me about 2 weeks in total. It was done on the side in parallel to my full time job.
+
+# Project requirements
+
+Develop a simple DApp (Decentralized Application) that enables users to interact with digital
+assets on the Ethereum blockchain using a provided ERC-721 (Non-Fungible Token, or NFT)
+smart contract.
+
+The smart contract can be deployed to an Ethereum testnet (e.g., Rinkeby,
+Ropsten, or Goerli).
+
+Files will be stored in ipfs [https://pinata.cloud/](https://pinata.cloud/)
+
+The backend consist of an API to manage application but storage and state is fully on chain
+
+The frontend is simple and user-friendly, it has 4 pages for:
+1- Allowing the user to connect their etheruem wallet (using MetaMask)
+2- Displaying a gallery of the digital assets owned by the connected wallet.
+3- Minting new digital assets (tokens) by interacting with the smart contract.
+4- Transfering assets to other addresses.
+
 
 # Live Application
 
