@@ -40,6 +40,8 @@ The project was maintainable but the issue is that 1 thing like drag and drop fu
 
 ### How I structured the project
 
+**I wouldn't do this in a real project**
+
 The above structure I think split the modules by type. To have a more clear intention behind my folders I split by concern (or context)
 
 For ex:
