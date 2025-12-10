@@ -12,7 +12,6 @@
 &nbsp;&nbsp;[1.3 Run the application using docker](#13-run-the-application-using-docker)<br>
 &nbsp;&nbsp;[1.4 Run the application manually in the terminal](#14-run-the-application-manually-in-the-terminal)<br><br>
 [2. Contract and Solidity](#2-contract-and-solidity)<br><br>
-[3. Requirements](#3-requirements)<br><br>
 [4. Assumptions and Approach](#4-development-assumptions-and-approach)<br>
 &nbsp;&nbsp;[4.1 Assumptions](#41-assumptions)<br>
 &nbsp;&nbsp;[4.2 Approach](#42-approach)<br><br>
@@ -337,10 +336,6 @@ By now the backend and frontend applications are running
 *After confirming with Araceli Martinez that the link provided for the smart contract in the requirement documents is not working, I used an industry standard ERC-721 contract from Oppenzeppelin*
 
 As stated by Araceli Martinez my role is to have a full undestanding of the Web3 and its ecosystem without being an expert in contract creation and solidity.
-
-## 3. Requirements
-
-This is the original [Fullstack_js_-_Web3_Integration](./docs/planning/documents/Fullstack_js_-_Web3_Integration.pdf) requirements document.
 
 ## 4. Assumptions and Approach
 
