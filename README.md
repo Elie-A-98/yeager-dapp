@@ -38,8 +38,11 @@ This project took me about 2 weeks in total. It was done on the side in parallel
 
 # Live Application
 
-**To save AWS expenses and because this is a demo, i stopped the application.
-The website will be secured with an SSL certificate. I will use certbot and integrate it with my already configured nginx server**
+**The application is no longer live but you can still follow the instructions and run it locally.**
+
+**(I used AWS to host it previsouly)**
+
+**TODO: use certbot and integrate it with my already configured nginx server**
 
 There are 2 environments: dev (better: provided accounts with eth) and production(requires you to send sepolia eth to the contract owner)
 
