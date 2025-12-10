@@ -32,9 +32,9 @@
 
 # Announcement
 
-This project took me about 1+ week in total. I was working on another project in parallel which forced me to shift my focus away at some times
-
-This is overengineered on purpose. In. real world application for such simple requirements the code would have have been much simpler.
+My main tech stack is .Net on the backend and react on the frontend but this demo project was done with NodeJs and Vue, and it contains things that I wouldn't do in a real world project.
+**(This is overengineered on purpose)**
+This project took me about 2 weeks in total. It was done on the side in parallel to my full time job.
 
 # Live Application
 
